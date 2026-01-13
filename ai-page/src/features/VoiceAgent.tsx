@@ -25,15 +25,46 @@ const VoiceAgent: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col text-slate-200">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white flex flex-col text-slate-900 relative overflow-hidden">
+      {/* Animated gradient background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="gradient-mesh absolute inset-0 opacity-40" />
+        <style>{`
+          @keyframes gradient-shift {
+            0%, 100% {
+              transform: translate(0%, 0%) scale(1);
+            }
+            33% {
+              transform: translate(5%, -5%) scale(1.1);
+            }
+            66% {
+              transform: translate(-5%, 5%) scale(1.05);
+            }
+          }
+          .gradient-mesh {
+            background: linear-gradient(
+              135deg,
+              rgba(59, 130, 246, 0.2) 0%,
+              rgba(147, 51, 234, 0.2) 25%,
+              rgba(59, 130, 246, 0.2) 50%,
+              rgba(14, 165, 233, 0.2) 75%,
+              rgba(59, 130, 246, 0.2) 100%
+            );
+            background-size: 200% 200%;
+            animation: gradient-shift 10s ease infinite;
+            will-change: transform;
+          }
+        `}</style>
+      </div>
+
       {/* Main Content Area */}
-      <main className="flex-1 flex flex-col max-w-4xl mx-auto w-full p-4 md:p-8 pt-8">
+      <main className="flex-1 flex flex-col max-w-4xl mx-auto w-full p-4 md:p-6 lg:p-8 pt-28 md:pt-32 relative z-10 pb-8">
         {/* Intro Message */}
         {messages.length === 0 && status === SessionStatus.IDLE && (
-          <div className="flex-1 flex flex-col items-center justify-center text-center space-y-6">
-            <div className="w-24 h-24 bg-slate-900 rounded-2xl flex items-center justify-center border border-white/10">
+          <div className="flex flex-col items-center justify-center text-center space-y-6 py-8 md:py-12">
+            <div className="w-24 h-24 bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl flex items-center justify-center border border-blue-200/50 shadow-lg">
               <svg
-                className="w-12 h-12 text-lime-400"
+                className="w-12 h-12 text-blue-600"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -50,45 +81,17 @@ const VoiceAgent: React.FC = () => {
               <h2 className="text-3xl font-extrabold tracking-tight">
                 AI Voice Chat Demo
               </h2>
-              <p className="text-slate-400 max-w-md mx-auto">
+              <p className="text-slate-600 max-w-md mx-auto">
                 This is a demo application showing how to integrate the AI Voice
                 Agent library into your React application. Click the button
                 below to start a conversation.
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
-              {[
-                {
-                  title: "Easy Integration",
-                  desc: "Simple React hook API",
-                  icon: "⚡",
-                },
-                {
-                  title: "Customizable",
-                  desc: "Change prompts easily",
-                  icon: "🎨",
-                },
-                {
-                  title: "Voice Enabled",
-                  desc: "Real-time audio",
-                  icon: "🎤",
-                },
-              ].map((item, idx) => (
-                <div
-                  key={idx}
-                  className="glass-card p-4 rounded-xl text-left border-l-2 border-l-lime-500/50"
-                >
-                  <div className="text-2xl mb-1">{item.icon}</div>
-                  <div className="font-bold text-sm">{item.title}</div>
-                  <div className="text-xs text-slate-400">{item.desc}</div>
-                </div>
-              ))}
-            </div>
           </div>
         )}
 
         {/* Chat Log */}
-        <div className="flex-1 overflow-y-auto space-y-6 mb-8 scrollbar-hide">
+        <div className="flex-1 overflow-y-auto space-y-4 md:space-y-6 mb-6 md:mb-8 scrollbar-hide max-h-[60vh]">
           {messages.map((msg, idx) => (
             <div
               key={idx}
@@ -97,10 +100,10 @@ const VoiceAgent: React.FC = () => {
               } animate-in slide-in-from-bottom-2 duration-300`}
             >
               <div
-                className={`max-w-[80%] rounded-2xl p-4 ${
+                className={`max-w-[80%] rounded-xl p-4 ${
                   msg.role === "user"
-                    ? "bg-lime-500 text-slate-950 font-semibold"
-                    : "glass-card border-white/5 text-slate-200"
+                    ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold shadow-lg"
+                    : "bg-white border border-slate-200 text-slate-900 shadow-sm"
                 }`}
               >
                 <div className="text-xs opacity-50 mb-1 flex justify-between gap-4">
@@ -120,18 +123,18 @@ const VoiceAgent: React.FC = () => {
         </div>
 
         {/* Action Center (Sticky Bottom) */}
-        <div className="sticky bottom-0 pb-8 pt-4 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent">
-          <div className="glass-card rounded-3xl p-6 shadow-2xl border-white/10 flex flex-col items-center gap-6">
+        <div className="sticky bottom-0 pb-4 md:pb-8 pt-4 bg-gradient-to-t from-white via-white/80 to-transparent">
+          <div className="bg-white rounded-xl p-4 md:p-6 shadow-lg border border-slate-200 flex flex-col items-center gap-4 md:gap-6">
             <Visualizer
               isActive={status === SessionStatus.ACTIVE}
               isModelTalking={isAssistantTalking}
             />
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3 md:gap-4 w-full sm:w-auto">
               {status === SessionStatus.ACTIVE ? (
                 <button
                   onClick={handleEndSession}
-                  className="bg-red-500 hover:bg-red-600 text-white font-bold px-8 py-4 rounded-2xl flex items-center gap-2 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-red-500/20"
+                  className="bg-red-500 hover:bg-red-600 text-white font-bold px-6 md:px-8 py-3 md:py-4 rounded-lg flex items-center justify-center gap-2 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-red-500/20 text-sm md:text-base w-full sm:w-auto"
                 >
                   <svg
                     className="w-5 h-5"
@@ -152,7 +155,7 @@ const VoiceAgent: React.FC = () => {
                 <button
                   disabled={status === SessionStatus.CONNECTING}
                   onClick={handleStartSession}
-                  className={`bg-lime-500 hover:bg-lime-400 text-slate-950 font-bold px-10 py-5 rounded-2xl flex items-center gap-3 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-lime-500/20 ${
+                  className={`bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold px-8 md:px-10 py-4 md:py-5 rounded-lg flex items-center justify-center gap-2 md:gap-3 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-blue-500/20 text-sm md:text-base w-full sm:w-auto ${
                     status === SessionStatus.CONNECTING
                       ? "opacity-70 cursor-not-allowed"
                       : ""
@@ -160,7 +163,7 @@ const VoiceAgent: React.FC = () => {
                 >
                   {status === SessionStatus.CONNECTING ? (
                     <>
-                      <div className="w-5 h-5 border-4 border-slate-950 border-t-transparent rounded-full animate-spin" />
+                      <div className="w-5 h-5 border-4 border-white border-t-transparent rounded-full animate-spin" />
                       Connecting...
                     </>
                   ) : (
@@ -180,12 +183,12 @@ const VoiceAgent: React.FC = () => {
             </div>
 
             {status === SessionStatus.ACTIVE && !isAssistantTalking && (
-              <p className="text-lime-400/80 text-sm font-medium animate-pulse">
+              <p className="text-blue-600 text-sm font-medium animate-pulse">
                 Listening...
               </p>
             )}
             {isAssistantTalking && (
-              <p className="text-slate-400 text-sm font-medium">
+              <p className="text-slate-600 text-sm font-medium">
                 Assistant is speaking...
               </p>
             )}
@@ -193,11 +196,6 @@ const VoiceAgent: React.FC = () => {
         </div>
       </main>
 
-      {/* Background elements */}
-      <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
-        <div className="absolute top-1/4 -left-20 w-80 h-80 bg-lime-500/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-[140px]" />
-      </div>
     </div>
   );
 };

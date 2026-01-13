@@ -23,15 +23,46 @@ const TranscriptionTool: React.FC = () => {
   const isTranscribing = status === TranscriptionStatus.TRANSCRIBING;
 
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col text-slate-200">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white flex flex-col text-slate-900 relative overflow-hidden">
+      {/* Animated gradient background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="gradient-mesh absolute inset-0 opacity-40" />
+        <style>{`
+          @keyframes gradient-shift {
+            0%, 100% {
+              transform: translate(0%, 0%) scale(1);
+            }
+            33% {
+              transform: translate(5%, -5%) scale(1.1);
+            }
+            66% {
+              transform: translate(-5%, 5%) scale(1.05);
+            }
+          }
+          .gradient-mesh {
+            background: linear-gradient(
+              135deg,
+              rgba(59, 130, 246, 0.2) 0%,
+              rgba(147, 51, 234, 0.2) 25%,
+              rgba(59, 130, 246, 0.2) 50%,
+              rgba(14, 165, 233, 0.2) 75%,
+              rgba(59, 130, 246, 0.2) 100%
+            );
+            background-size: 200% 200%;
+            animation: gradient-shift 10s ease infinite;
+            will-change: transform;
+          }
+        `}</style>
+      </div>
+
       {/* Main Content Area */}
-      <main className="flex-1 flex flex-col max-w-4xl mx-auto w-full p-4 md:p-8 pt-8">
+      <main className="flex-1 flex flex-col mt-4 max-w-4xl mx-auto w-full p-4 md:p-6 lg:p-8 pt-28 md:pt-32 relative z-10 pb-8">
         {/* Intro Message */}
         {!transcription && !isRecording && !isTranscribing && (
-          <div className="flex-1 flex flex-col items-center justify-center text-center space-y-8 py-8">
-            <div className="w-24 h-24 bg-slate-900/50 rounded-2xl flex items-center justify-center border border-white/10 shadow-lg">
+          <div className="flex flex-col items-center justify-center text-center space-y-6 md:space-y-8 py-8 md:py-12">
+            <div className="w-24 h-24 bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl flex items-center justify-center border border-blue-200/50 shadow-lg">
               <svg
-                className="w-12 h-12 text-lime-300"
+                className="w-12 h-12 text-blue-600"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -45,66 +76,35 @@ const TranscriptionTool: React.FC = () => {
               </svg>
             </div>
             <div className="space-y-3">
-              <h2 className="text-4xl font-extrabold tracking-tight text-white">
+              <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900">
                 Voice Transcription Demo
               </h2>
-              <p className="text-slate-400 max-w-md mx-auto text-base">
+              <p className="text-slate-600 max-w-md mx-auto text-base">
                 Click the button below to start recording. Your speech will be
                 transcribed in real-time.
               </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-2xl">
-              {[
-                {
-                  title: "Easy Integration",
-                  desc: "Simple React hook API",
-                  icon: "⚡",
-                  iconColor: "text-yellow-400",
-                },
-                {
-                  title: "Real-time",
-                  desc: "Instant transcription",
-                  icon: "🎤",
-                  iconColor: "text-slate-300",
-                },
-                {
-                  title: "Accurate",
-                  desc: "Powered by Gemini AI",
-                  icon: "✨",
-                  iconColor: "text-yellow-400",
-                },
-              ].map((item, idx) => (
-                <div
-                  key={idx}
-                  className="glass-card p-5 rounded-xl text-left border-l-2 border-l-lime-500/50 hover:border-l-lime-500 transition-colors"
-                >
-                  <div className={`text-3xl mb-2 ${item.iconColor}`}>{item.icon}</div>
-                  <div className="font-bold text-sm text-white mb-1">{item.title}</div>
-                  <div className="text-xs text-slate-400">{item.desc}</div>
-                </div>
-              ))}
             </div>
           </div>
         )}
 
         {/* Control Panel */}
-        <div className="glass-card rounded-3xl p-8 shadow-2xl border-white/10 flex flex-col items-center mb-8 bg-slate-900/60 backdrop-blur-md">
-          <div className="relative mb-8">
+        <div className="bg-white rounded-xl p-6 md:p-8 shadow-lg border border-slate-200 flex flex-col items-center mb-6 md:mb-8">
+          <div className="relative mb-6 md:mb-8">
             {isRecording && (
               <div className="absolute inset-0 bg-red-500 rounded-full blur-xl opacity-30 animate-pulse"></div>
             )}
             <button
               onClick={isRecording ? stopRecording : startRecording}
               disabled={isTranscribing}
-              className={`relative z-10 w-28 h-28 rounded-full flex items-center justify-center transition-all duration-300 transform active:scale-95 shadow-2xl ${
+              className={`relative z-10 w-24 h-24 md:w-28 md:h-28 rounded-full flex items-center justify-center transition-all duration-300 transform active:scale-95 shadow-2xl ${
                 isRecording
                   ? "bg-red-500 hover:bg-red-600 text-white shadow-red-500/50"
-                  : "bg-lime-500 hover:bg-lime-400 text-white shadow-lime-500/50"
+                  : "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-blue-500/50"
               } ${isTranscribing ? "opacity-50 cursor-not-allowed" : "hover:scale-105"}`}
             >
               {isRecording ? (
                 <svg
-                  className="w-10 h-10"
+                  className="w-8 h-8 md:w-10 md:h-10"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -116,7 +116,7 @@ const TranscriptionTool: React.FC = () => {
                 </svg>
               ) : (
                 <svg
-                  className="w-10 h-10"
+                  className="w-8 h-8 md:w-10 md:h-10"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -133,25 +133,25 @@ const TranscriptionTool: React.FC = () => {
           <div className="text-center">
             {isRecording ? (
               <div className="space-y-2">
-                <p className="text-red-400 font-bold uppercase tracking-widest text-xs">
+                <p className="text-red-500 font-bold uppercase tracking-widest text-xs">
                   Recording
                 </p>
-                <p className="text-5xl font-mono text-white font-bold">
+                <p className="text-4xl md:text-5xl font-mono text-slate-900 font-bold">
                   {formatTime(recordingTime)}
                 </p>
               </div>
             ) : isTranscribing ? (
               <div className="space-y-3">
-                <p className="text-lime-400 font-medium flex items-center justify-center gap-2 text-base">
-                  <div className="w-5 h-5 border-4 border-lime-400 border-t-transparent rounded-full animate-spin" />
+                <p className="text-blue-600 font-medium flex items-center justify-center gap-2 text-base">
+                  <div className="w-5 h-5 border-4 border-blue-600 border-t-transparent rounded-full animate-spin" />
                   Analyzing Audio...
                 </p>
-                <p className="text-slate-400 text-sm italic">
+                <p className="text-slate-600 text-sm italic">
                   Processing your voice
                 </p>
               </div>
             ) : (
-              <p className="text-slate-300 font-medium text-base">
+              <p className="text-slate-700 font-medium text-base">
                 Click to start transcribing
               </p>
             )}
@@ -159,13 +159,13 @@ const TranscriptionTool: React.FC = () => {
         </div>
 
         {/* Results Section */}
-        <div className="glass-card rounded-3xl shadow-2xl border-white/10 overflow-hidden min-h-[300px] flex flex-col bg-slate-900/60 backdrop-blur-md">
-          <div className="px-6 py-4 bg-slate-900/70 border-b border-white/10 flex items-center justify-between">
-            <h3 className="font-semibold text-white text-lg">Transcription Result</h3>
+        <div className="bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden min-h-[300px] flex flex-col">
+          <div className="px-4 md:px-6 py-3 md:py-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between gap-4">
+            <h3 className="font-semibold text-slate-900 text-lg">Transcription Result</h3>
             {transcription && (
               <button
                 onClick={() => navigator.clipboard.writeText(transcription)}
-                className="text-xs text-lime-400 hover:text-lime-300 font-medium flex items-center gap-1.5 transition-colors px-3 py-1.5 rounded-lg hover:bg-white/10 border border-lime-500/20 hover:border-lime-500/40"
+                className="text-xs text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1.5 transition-colors px-3 py-1.5 rounded-md hover:bg-blue-50 border border-blue-200 hover:border-blue-300"
               >
                 <svg
                   className="w-4 h-4"
@@ -185,7 +185,7 @@ const TranscriptionTool: React.FC = () => {
             )}
           </div>
 
-          <div className="flex-grow p-6">
+          <div className="flex-grow p-4 md:p-6 overflow-y-auto max-h-[60vh]">
             {error && (
               <div className="bg-red-500/10 border border-red-500/50 rounded-xl p-4 flex items-start gap-3 text-red-400">
                 <svg
@@ -208,7 +208,7 @@ const TranscriptionTool: React.FC = () => {
             {!error && !transcription && !isTranscribing && (
               <div className="h-full flex flex-col items-center justify-center text-slate-400 py-12">
                 <svg
-                  className="w-20 h-20 mb-4 opacity-30 text-slate-500"
+                  className="w-20 h-20 mb-4 opacity-30 text-slate-300"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -226,14 +226,14 @@ const TranscriptionTool: React.FC = () => {
 
             {isTranscribing && (
               <div className="space-y-4 animate-pulse">
-                <div className="h-4 bg-slate-700/50 rounded w-3/4"></div>
-                <div className="h-4 bg-slate-700/50 rounded w-full"></div>
-                <div className="h-4 bg-slate-700/50 rounded w-5/6"></div>
+                <div className="h-4 bg-slate-200 rounded w-3/4"></div>
+                <div className="h-4 bg-slate-200 rounded w-full"></div>
+                <div className="h-4 bg-slate-200 rounded w-5/6"></div>
               </div>
             )}
 
             {transcription && !isTranscribing && (
-              <div className="prose prose-invert max-w-none text-slate-100 leading-relaxed whitespace-pre-wrap text-base">
+              <div className="prose max-w-none text-slate-900 leading-relaxed whitespace-pre-wrap text-base">
                 {transcription}
               </div>
             )}
@@ -241,11 +241,6 @@ const TranscriptionTool: React.FC = () => {
         </div>
       </main>
 
-      {/* Background elements */}
-      <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
-        <div className="absolute top-1/4 -left-20 w-80 h-80 bg-lime-500/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-[140px]" />
-      </div>
     </div>
   );
 };

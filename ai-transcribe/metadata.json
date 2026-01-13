@@ -1,0 +1,7 @@
+{
+  "name": "Gemini Transcribe",
+  "description": "A high-performance audio transcription application powered by Gemini 3 Flash Preview, featuring real-time microphone recording and instant AI transcription.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

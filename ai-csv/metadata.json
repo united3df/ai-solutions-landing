@@ -1,0 +1,5 @@
+{
+  "name": "CSV Gen Studio",
+  "description": "An AI-powered data assistant that generates structured table data from prompts and allows instant CSV export.",
+  "requestFramePermissions": []
+}

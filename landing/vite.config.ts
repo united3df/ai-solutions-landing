@@ -1,69 +1,9 @@
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react-swc';
+import path from 'path';
 
-  import { defineConfig, Plugin } from 'vite';
-  import react from '@vitejs/plugin-react-swc';
-  import path from 'path';
-  import { readFileSync, existsSync } from 'fs';
-
-  // Plugin to handle react/jsx-runtime imports from ai-page
-  function handleAiPageImports(): Plugin {
-    return {
-      name: 'handle-ai-page-imports',
-      enforce: 'pre',
-      resolveId(id, importer) {
-        // Handle react/jsx-runtime imports, especially from ai-page files
-        if (id === 'react/jsx-runtime' || id === 'react/jsx-dev-runtime') {
-          // Return a virtual module ID to intercept
-          return `\0${id}`;
-        }
-        return null;
-      },
-      load(id) {
-        // Handle virtual modules for react/jsx-runtime
-        if (id === '\0react/jsx-runtime') {
-          // Try multiple possible paths
-          const possiblePaths = [
-            path.resolve(__dirname, 'node_modules/react/jsx-runtime.js'),
-            path.resolve(process.cwd(), 'node_modules/react/jsx-runtime.js'),
-          ];
-          
-          for (const filePath of possiblePaths) {
-            if (existsSync(filePath)) {
-              try {
-                return readFileSync(filePath, 'utf-8');
-              } catch {
-                // Continue to next path
-              }
-            }
-          }
-          
-          // Fallback: re-export from react/jsx-runtime (let Vite resolve it)
-          return `export * from 'react/jsx-runtime';`;
-        }
-        if (id === '\0react/jsx-dev-runtime') {
-          const possiblePaths = [
-            path.resolve(__dirname, 'node_modules/react/jsx-dev-runtime.js'),
-            path.resolve(process.cwd(), 'node_modules/react/jsx-dev-runtime.js'),
-          ];
-          
-          for (const filePath of possiblePaths) {
-            if (existsSync(filePath)) {
-              try {
-                return readFileSync(filePath, 'utf-8');
-              } catch {
-                // Continue to next path
-              }
-            }
-          }
-          
-          return `export * from 'react/jsx-dev-runtime';`;
-        }
-        return null;
-      },
-    };
-  }
-
-  export default defineConfig({
-    plugins: [react(), handleAiPageImports()],
+export default defineConfig({
+    plugins: [react()],
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
       conditions: ['import', 'module', 'browser', 'default'],
@@ -109,13 +49,15 @@
         '@radix-ui/react-accordion@1.2.3': '@radix-ui/react-accordion',
         'react/jsx-runtime': 'react/jsx-runtime',
         'react/jsx-dev-runtime': 'react/jsx-dev-runtime',
+        'react-router-dom': path.resolve(__dirname, 'node_modules/react-router-dom'),
+        '@google/genai': path.resolve(__dirname, 'node_modules/@google/genai'),
         '@': path.resolve(__dirname, './src'),
       },
-      dedupe: ['react', 'react-dom', 'react/jsx-runtime'],
+      dedupe: ['react', 'react-dom', 'react/jsx-runtime', 'react-router-dom', '@google/genai'],
       preserveSymlinks: false,
     },
     optimizeDeps: {
-      include: ['react', 'react-dom', 'react/jsx-runtime', 'react-router-dom'],
+      include: ['react', 'react-dom', 'react/jsx-runtime', 'react-router-dom', '@google/genai'],
       esbuildOptions: {
         jsx: 'automatic',
       },

@@ -22,9 +22,9 @@ export function WhatWeDo() {
             We design and build AI systems that integrate into how your business already works.
           </p>
 
-          <div className={`pt-6 space-y-3 text-left transition-all duration-700 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className={`space-y-3 text-center transition-all duration-700 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <p className="text-base text-slate-700">Our work focuses on:</p>
-            <ul className="space-y-3 text-slate-600 max-w-xl">
+            <ul className="space-y-3 text-slate-600 max-w-xl mx-auto">
               {["Clear scope and predictable behavior", "Maintainable architecture", "Measurable operational improvement"].map((item, i) => (
                 <li
                   key={i}

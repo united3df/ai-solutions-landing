@@ -5,6 +5,7 @@ import { FloatingParticles } from "./FloatingParticles";
 import { use3DTilt } from "../hooks/use3DTilt";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { openCalendlyPopup } from "../lib/utils/calendly";
 
 export function Hero() {
   const { tilt, handleMouseMove, handleMouseLeave } = use3DTilt(8);
@@ -54,7 +55,11 @@ export function Hero() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4 fade-in-up delay-900">
-            <Button size="lg" className="gap-2 cta-button-primary group relative overflow-hidden">
+            <Button 
+              size="lg" 
+              className="gap-2 cta-button-primary group relative overflow-hidden"
+              onClick={() => openCalendlyPopup()}
+            >
               <span className="relative z-10">Discuss a real use case</span>
               <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
               <span className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse-glow" />

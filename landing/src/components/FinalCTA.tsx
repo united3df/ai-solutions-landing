@@ -4,12 +4,14 @@ import { Button } from "./ui/button";
 import { useRef, useState, MouseEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
+import { ContactForm } from "./ContactForm";
 
 export function FinalCTA() {
   const sectionRef = useRef<HTMLElement>(null);
   const isVisible = useIntersectionObserver(sectionRef);
   const navigate = useNavigate();
   const [ripples, setRipples] = useState<Array<{ id: number; x: number; y: number }>>([]);
+  const [isContactFormOpen, setIsContactFormOpen] = useState(false);
 
   const handleButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
     const button = e.currentTarget;
@@ -87,12 +89,19 @@ export function FinalCTA() {
               <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
               <span className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pulse-glow-button" />
             </Button>
-            <Button size="lg" variant="outline" className="hover:scale-105 transition-transform duration-300">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="hover:scale-105 transition-transform duration-300"
+              onClick={() => setIsContactFormOpen(true)}
+            >
               Contact us
             </Button>
           </div>
         </div>
       </div>
+
+      <ContactForm open={isContactFormOpen} onOpenChange={setIsContactFormOpen} />
 
       <style jsx>{`
         @keyframes mesh-move {

@@ -64,7 +64,7 @@ export function FAQ() {
         </Accordion>
       </div>
 
-      <style jsx>{`
+      <style>{`
         :global(.faq-item[data-state="open"]) {
           background: linear-gradient(to right, rgba(59, 130, 246, 0.05), transparent);
         }

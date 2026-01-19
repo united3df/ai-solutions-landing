@@ -92,7 +92,7 @@ export function Industries() {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes drop-bounce {
           0% {
             transform: translateY(-20px);

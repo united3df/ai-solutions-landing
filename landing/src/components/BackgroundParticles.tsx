@@ -37,7 +37,7 @@ export function BackgroundParticles({ count = 30 }: { count?: number }) {
           }}
         />
       ))}
-      <style jsx>{`
+      <style>{`
         @keyframes ambient-float {
           0%, 100% {
             transform: translate(0, 0);

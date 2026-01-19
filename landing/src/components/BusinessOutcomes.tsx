@@ -150,7 +150,7 @@ function OutcomeCard({
         <p className="text-slate-700">{outcome.title}</p>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes shimmer-glass {
           0% {
             background-position: -200% center;

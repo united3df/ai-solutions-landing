@@ -16,7 +16,7 @@ export function Footer() {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes gentle-rotate {
           0%, 100% {
             transform: rotate(0deg);

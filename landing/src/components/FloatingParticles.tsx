@@ -37,7 +37,7 @@ export function FloatingParticles({ count = 20 }: { count?: number }) {
           }}
         />
       ))}
-      <style jsx>{`
+      <style>{`
         @keyframes float {
           0%, 100% {
             transform: translate(0, 0) scale(1);

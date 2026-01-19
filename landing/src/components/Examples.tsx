@@ -152,7 +152,7 @@ function DemoCard({
         </Button>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes ping-ring {
           0% {
             transform: scale(1);

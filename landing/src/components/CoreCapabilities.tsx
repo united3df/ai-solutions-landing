@@ -1,3 +1,4 @@
+import React from "react";
 import { Mic, BookOpen, Sparkles, Rocket, ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { useRef, useState } from "react";
@@ -87,10 +88,10 @@ export function CoreCapabilities() {
             const Icon = capability.icon;
             const isHovered = hoveredCard === index;
             return (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className={`capability-card bg-white rounded-lg p-8 shadow-sm hover:shadow-2xl transition-all duration-500 relative overflow-hidden ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-                style={{ 
+                style={{
                   transitionDelay: `${index * 150}ms`,
                   transform: isHovered ? 'translateY(-12px) scale(1.03)' : '',
                   willChange: 'transform'
@@ -100,7 +101,7 @@ export function CoreCapabilities() {
               >
                 {/* Animated gradient border */}
                 <div className="gradient-border" />
-                
+
                 <div className="flex items-start gap-4 mb-4 relative z-10">
                   <div className={`p-3 rounded-lg bg-blue-50 transition-all duration-500 ${isHovered ? 'scale-110' : ''}`}>
                     <Icon className={`w-6 h-6 text-blue-600 transition-all duration-500 ${isHovered ? 'rotate-360' : ''}`} />
@@ -146,10 +147,10 @@ export function CoreCapabilities() {
                     </p>
                   )}
 
-                  <Button 
-                    variant="link" 
+                  <Button
+                    variant="link"
                     className="gap-2 px-0 text-blue-600 group"
-                    onClick={() => navigate("/ai-page")}
+                    onClick={() => navigate("/ai-page/voice-agent")}
                   >
                     {capability.cta}
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -161,7 +162,7 @@ export function CoreCapabilities() {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes float {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-5px); }

@@ -2,7 +2,7 @@ export function AnimatedGradientBackground() {
   return (
     <div className="absolute inset-0 overflow-hidden">
       <div className="gradient-mesh absolute inset-0 opacity-60" />
-      <style jsx>{`
+      <style>{`
         @keyframes gradient-shift {
           0%, 100% {
             transform: translate(0%, 0%) scale(1);

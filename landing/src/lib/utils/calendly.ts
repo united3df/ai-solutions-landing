@@ -25,5 +25,5 @@ function buildCalendlyUrl(url?: string): string {
 
 export function openCalendlyPopup(url?: string): void {
     const calendlyUrl = buildCalendlyUrl(url);
-    window.location.href = calendlyUrl;
+    window.open(calendlyUrl, '_blank', 'noopener,noreferrer');
 }

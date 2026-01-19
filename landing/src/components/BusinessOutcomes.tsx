@@ -5,19 +5,27 @@ import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 const outcomes = [
   {
     icon: Clock,
-    title: "Faster response times"
+    title: "Faster response times",
+    metric: "10 min → 4 min",
+    description: "Average response time reduced by more than 2x."
   },
   {
     icon: MessageSquare,
-    title: "More consistent communication"
+    title: "More consistent communication",
+    metric: "Error rate: 5% → 2%",
+    description: "Fewer human errors, stable responses following business rules."
   },
   {
     icon: TrendingDown,
-    title: "Lower operational load"
+    title: "Lower operational load",
+    metric: "−180 hours / month",
+    description: "Reduced manual work through AI assistants and automation."
   },
   {
     icon: Users,
-    title: "Better onboarding and knowledge sharing"
+    title: "Better onboarding & knowledge sharing",
+    metric: "3 weeks → 7 days",
+    description: "Faster onboarding and access to knowledge without dependency on key people."
   }
 ];
 
@@ -103,7 +111,7 @@ function OutcomeCard({
 
   return (
     <div 
-      className={`outcome-card bg-white/80 backdrop-blur-md p-6 rounded-lg shadow-sm text-center relative overflow-hidden transition-all duration-500 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'} ${isHovered ? 'shadow-2xl -translate-y-2' : ''}`}
+      className={`outcome-card bg-white/80 backdrop-blur-md p-6 md:p-8 rounded-lg shadow-sm text-center relative overflow-hidden transition-all duration-500 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'} ${isHovered ? 'shadow-2xl -translate-y-2' : ''}`}
       style={{ 
         transitionDelay: `${index * 150}ms`,
         willChange: 'transform',
@@ -139,7 +147,7 @@ function OutcomeCard({
         />
       ))}
 
-      <div className="relative z-10">
+      <div className="relative z-10 space-y-3">
         <div className="icon-orbit inline-flex p-3 rounded-lg bg-blue-50 mb-4 relative">
           {/* Rotating orbit animation */}
           {isHovered && (
@@ -147,7 +155,19 @@ function OutcomeCard({
           )}
           <Icon className={`w-6 h-6 text-blue-600 transition-transform duration-500 ${isHovered ? 'rotate-12 scale-110' : ''}`} />
         </div>
-        <p className="text-slate-700">{outcome.title}</p>
+        <p className="text-slate-700 font-semibold text-lg">{outcome.title}</p>
+        {outcome.metric && (
+          <div className="metric-display">
+            <p className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              {outcome.metric}
+            </p>
+          </div>
+        )}
+        {outcome.description && (
+          <p className="text-sm text-slate-600 leading-relaxed mt-2">
+            {outcome.description}
+          </p>
+        )}
       </div>
 
       <style>{`

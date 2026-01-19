@@ -2591,3 +2591,22 @@ html {
     height: 0;
   }
 }
+
+/* Calendly popup styles - ensure it appears above all content */
+.calendly-overlay,
+.calendly-overlay-mask {
+  z-index: 99999 !important;
+  position: fixed !important;
+}
+
+.calendly-popup-content,
+.calendly-popup-content-wrapper {
+  z-index: 100000 !important;
+  position: fixed !important;
+}
+
+.calendly-popup-content iframe,
+.calendly-popup-content-wrapper iframe {
+  z-index: 100001 !important;
+  position: relative !important;
+}

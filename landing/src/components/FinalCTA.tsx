@@ -2,14 +2,13 @@ import React from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { useRef, useState, MouseEvent } from "react";
-import { useNavigate } from "react-router-dom";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import { ContactForm } from "./ContactForm";
+import { openCalendlyPopup } from "../lib/utils/calendly";
 
 export function FinalCTA() {
   const sectionRef = useRef<HTMLElement>(null);
   const isVisible = useIntersectionObserver(sectionRef);
-  const navigate = useNavigate();
   const [ripples, setRipples] = useState<Array<{ id: number; x: number; y: number }>>([]);
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
 
@@ -22,9 +21,9 @@ export function FinalCTA() {
     const newRipple = { id: Date.now(), x, y };
     setRipples(prev => [...prev, newRipple]);
 
-    setTimeout(() => {
+    setTimeout(async () => {
       setRipples(prev => prev.filter(r => r.id !== newRipple.id));
-      navigate("/ai-page");
+      await openCalendlyPopup();
     }, 300);
   };
 

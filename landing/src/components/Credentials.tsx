@@ -6,7 +6,7 @@ import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 
 const reviews = [
   {
-    quote: "IPOfunnel has created a good development team.",
+    quote: "AI4B2B has created a good development team.",
     author: "Founder, NFT Marketplace",
     project: "Web & Mobile App Development",
     rating: 4.5,

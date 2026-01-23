@@ -1,3 +1,4 @@
+import React from "react";
 import { useRef } from "react";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 
@@ -5,11 +6,33 @@ export function Footer() {
   const footerRef = useRef<HTMLElement>(null);
   const isVisible = useIntersectionObserver(footerRef);
 
+  const handleLinkClick = (path: string, e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    window.open(path, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <footer ref={footerRef} className={`bg-slate-900 text-white py-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center space-y-4">
           <p className="text-lg footer-logo">Practical AI for Business</p>
+          <div className="flex flex-wrap justify-center gap-4 text-sm">
+            <a
+              href="/terms"
+              onClick={(e) => handleLinkClick('/terms', e)}
+              className="text-slate-400 hover:text-white transition-colors cursor-pointer"
+            >
+              Terms of Service
+            </a>
+            <span className="text-slate-400">·</span>
+            <a
+              href="/privacy"
+              onClick={(e) => handleLinkClick('/privacy', e)}
+              className="text-slate-400 hover:text-white transition-colors cursor-pointer"
+            >
+              Privacy Policy
+            </a>
+          </div>
           <p className="text-sm text-slate-400">
             © 2026 — All rights reserved
           </p>

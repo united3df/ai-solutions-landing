@@ -14,6 +14,8 @@ import { ScrollProgress } from "./components/ScrollProgress";
 import { CursorTrail } from "./components/CursorTrail";
 import { BackgroundParticles } from "./components/BackgroundParticles";
 import { AIPageApp } from "./components/AIPageApp";
+import { TermsOfService } from "./components/TermsOfService";
+import { PrivacyPolicy } from "./components/PrivacyPolicy";
 
 function LandingPage() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -34,7 +36,7 @@ function LandingPage() {
     <div className="min-h-screen">
       {/* Scroll progress bar */}
       <ScrollProgress />
-      
+
       {/* Cursor trail effect */}
       <CursorTrail />
 
@@ -156,6 +158,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/ai-page/*" element={<AIPageApp />} />
+        <Route path="/terms" element={<TermsOfService />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
       </Routes>
     </BrowserRouter>
   );

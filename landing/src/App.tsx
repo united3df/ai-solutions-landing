@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Hero } from "./components/Hero";
+import { Credentials } from "./components/Credentials";
 import { WhatWeDo } from "./components/WhatWeDo";
 import { CoreCapabilities } from "./components/CoreCapabilities";
 import { Industries } from "./components/Industries";
@@ -53,6 +54,7 @@ function LandingPage() {
       {/* Main content */}
       <div className={`page-content ${isLoaded ? 'content-visible' : 'content-hidden'}`}>
         <Hero />
+        <Credentials />
         <WhatWeDo />
         <CoreCapabilities />
         <Industries />

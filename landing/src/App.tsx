@@ -62,7 +62,7 @@ function LandingPage() {
         <Footer />
       </div>
 
-      <style>{`
+      <style jsx>{`
         @keyframes curtain-reveal {
           0% {
             clip-path: inset(0 0 0 0);

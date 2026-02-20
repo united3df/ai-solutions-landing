@@ -24,18 +24,28 @@ const dmSans = DM_Sans({
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://example.com";
 const devUrl = `${baseUrl}/dev`;
 
+const seoDescription =
+  "Full-Stack & AI developer with 8+ years experience. Production SaaS with multi-step journeys, RAG-based assistants, semantic search. RAG pipelines, LLM integrations, Cursor/Claude. Y Combinator, Techstars, Fortune 500. $2M+ ARR scaled.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: "MVPs. AI. Built Fast & Right. | AI4B2B Dev",
-  description:
-    "Full-Stack & AI developer with 8+ years experience. Building for Y Combinator, Techstars-backed teams, and Fortune 500s. Scaled to $2M+ ARR.",
+  description: seoDescription,
   keywords: [
     "full-stack developer",
     "AI developer",
     "MVP development",
+    "RAG pipelines",
+    "semantic search",
+    "LLM integration",
+    "SaaS development",
+    "multi-step workflows",
+    "AI voice agents",
     "Y Combinator",
     "Techstars",
     "B2B software",
+    "Cursor AI",
+    "Claude AI",
   ],
   openGraph: {
     type: "website",
@@ -43,18 +53,19 @@ export const metadata: Metadata = {
     url: devUrl,
     siteName: "AI4B2B Dev",
     title: "MVPs. AI. Built Fast & Right. | AI4B2B Dev",
-    description:
-      "Full-Stack & AI developer with 8+ years experience. Building for Y Combinator, Techstars-backed teams, and Fortune 500s.",
+    description: seoDescription,
   },
   twitter: {
     card: "summary_large_image",
     title: "MVPs. AI. Built Fast & Right. | AI4B2B Dev",
-    description:
-      "Full-Stack & AI developer with 8+ years experience. Building for Y Combinator, Techstars-backed teams, and Fortune 500s.",
+    description: seoDescription,
   },
   robots: {
     index: true,
     follow: true,
+  },
+  alternates: {
+    canonical: devUrl,
   },
 };
 

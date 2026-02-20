@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect } from "react";
+import { Check } from "lucide-react";
 
 const BADGES = [
   { label: "⭐ Top 2% Upwork", hi: true },
@@ -71,7 +72,31 @@ export function DevAbout() {
         <p className="text-dev-muted text-base font-light leading-[1.8]">
           Beyond code: I also help founders <strong className="text-dev-text font-medium">prepare investor pitches and attract early birds</strong> — because shipping a product is just the beginning.
         </p>
-        <p className="font-[var(--font-dev-mono)] text-[13px] text-dev-accent tracking-[0.04em]">
+        <div className="space-y-3 pt-2">
+          <div className="flex gap-3">
+            <Check className="w-5 h-5 text-dev-accent shrink-0 mt-0.5" strokeWidth={2} />
+            <div>
+              <p className="font-[var(--font-dev-mono)] text-[13px] text-dev-accent tracking-[0.04em] mb-1">
+                Structured flows / dashboards / AI
+              </p>
+              <p className="text-dev-muted text-base font-light leading-[1.8]">
+                I&apos;ve built production SaaS platforms with structured multi-step journeys, milestone tracking, resume logic, and clean progress dashboards. I implement state-driven workflows, admin-controlled content systems, and scalable backend architecture. On the AI side, I&apos;ve delivered RAG-based assistants, semantic search with embeddings, and contextual AI embedded directly into user flows — not just chat, but AI tied to user progress and platform logic.
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-3">
+            <Check className="w-5 h-5 text-dev-accent shrink-0 mt-0.5" strokeWidth={2} />
+            <div>
+              <p className="font-[var(--font-dev-mono)] text-[13px] text-dev-accent tracking-[0.04em] mb-1">
+                AI workflow
+              </p>
+              <p className="text-dev-muted text-base font-light leading-[1.8]">
+                I use AI tools daily to accelerate delivery — from turning specs into scoped tasks and scaffolding features with Cursor, Claude, OpenClaw to rapidly prototyping RAG pipelines (+MS stack), LLM integrations, and automation flows. AI helps me move from idea to working feature in a day or two, then I harden everything with strict typing, validation, testing, and clean architecture so speed never compromises production quality.
+              </p>
+            </div>
+          </div>
+        </div>
+        <p className="font-[var(--font-dev-mono)] text-[13px] text-dev-accent tracking-[0.04em] pt-2">
           🇺🇸 U.S.-based. Fast response. Founder-friendly communication.
         </p>
       </div>

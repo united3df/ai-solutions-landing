@@ -74,6 +74,14 @@ export function Hero() {
             >
               See example implementations
             </Button>
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="gap-2 cta-button-secondary hover:scale-105 transition-transform duration-300"
+              onClick={() => router.push("/dev")}
+            >
+              Developer portfolio
+            </Button>
           </div>
 
           {/* Video Block */}

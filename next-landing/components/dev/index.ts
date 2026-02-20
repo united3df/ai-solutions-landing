@@ -1,0 +1,12 @@
+export { DevNav } from "./DevNav";
+export { DevHero } from "./DevHero";
+export { DevTicker } from "./DevTicker";
+export { DevAbout } from "./DevAbout";
+export { DevServices } from "./DevServices";
+export { DevStack } from "./DevStack";
+export { DevOutcomes } from "./DevOutcomes";
+export { DevTestimonials } from "./DevTestimonials";
+export { DevPlatforms } from "./DevPlatforms";
+export { DevProcess } from "./DevProcess";
+export { DevCTA } from "./DevCTA";
+export { DevFooter } from "./DevFooter";

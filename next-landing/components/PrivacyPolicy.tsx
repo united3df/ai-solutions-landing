@@ -144,14 +144,17 @@ export function PrivacyPolicy() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-slate-900 mt-8 mb-4">Cookie Notice</h2>
-              <ul className="list-disc pl-6 space-y-2 text-slate-700">
+              <h2 className="text-2xl font-semibold text-slate-900 mt-8 mb-4">Cookies and Advertising</h2>
+              <p className="text-slate-700 leading-relaxed">
+                We use cookies and similar technologies for analytics and advertising when you consent.
+              </p>
+              <ul className="list-disc pl-6 space-y-2 text-slate-700 mt-4">
                 <li><strong>Essential cookies:</strong> Required for website functionality</li>
                 <li><strong>Analytics cookies:</strong> Anonymous usage statistics (optional, requires consent)</li>
-                <li><strong>Marketing cookies:</strong> We don't use these</li>
+                <li><strong>Advertising cookies:</strong> We may use Google Ads, Meta (Facebook) Pixel, TikTok Pixel, LinkedIn Insight Tag, and Microsoft UET for conversion tracking and ad optimization. These run only after you accept our cookie banner.</li>
               </ul>
               <p className="text-slate-700 leading-relaxed mt-4">
-                You can manage cookie preferences in your browser settings.
+                You can accept or reject non-essential cookies via our consent banner. You can also manage cookie preferences in your browser settings.
               </p>
             </section>
           </div>

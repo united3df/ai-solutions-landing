@@ -16,6 +16,13 @@ export function Footer() {
           <p className="text-lg footer-logo">Practical AI for Business</p>
           <div className="flex flex-wrap justify-center gap-4 text-sm">
             <Link
+              href="/dev"
+              className="text-slate-400 hover:text-white transition-colors cursor-pointer"
+            >
+              Developer
+            </Link>
+            <span className="text-slate-400">·</span>
+            <Link
               href="/terms"
               className="text-slate-400 hover:text-white transition-colors cursor-pointer"
             >

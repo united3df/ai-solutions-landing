@@ -12,6 +12,23 @@ export const metadata: Metadata = {
   },
 };
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://example.com";
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "AI Consulting & Implementation",
+  description:
+    "Voice AI, Knowledge Bases, Prompt Engineering, and AI MVPs. Built to support teams, reduce manual work, and fit existing processes.",
+  provider: {
+    "@type": "Organization",
+    name: "AI Solutions",
+  },
+  areaServed: "Worldwide",
+  serviceType: "AI Consulting",
+  url: baseUrl,
+};
+
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -62,6 +79,10 @@ const faqSchema = {
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

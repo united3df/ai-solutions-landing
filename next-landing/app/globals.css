@@ -121,6 +121,58 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  /* Dev page palette */
+  --color-dev-bg: #0a0a08;
+  --color-dev-surface: #111110;
+  --color-dev-border: #1e1e1a;
+  --color-dev-accent: #e8ff47;
+  --color-dev-text: #e8e6df;
+  --color-dev-muted: #6b6960;
+  --animate-dev-ticker: dev-ticker 28s linear infinite;
+  --animate-dev-pulse: dev-pulse 2s infinite;
+}
+
+@keyframes dev-ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes dev-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+}
+
+/* Dev page wrapper - noise overlay */
+.dev-page {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.dev-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.35;
+}
+
+/* Dev page fade-up sections - visible state when in viewport */
+.dev-page .visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @layer base {

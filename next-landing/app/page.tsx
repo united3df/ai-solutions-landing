@@ -1,143 +1,72 @@
-"use client";
+import type { Metadata } from "next";
+import { HomePageClient } from "@/components/HomePageClient";
 
-import { useEffect, useState } from "react";
-import { Hero } from "@/components/Hero";
-import { Credentials } from "@/components/Credentials";
-import { WhatWeDo } from "@/components/WhatWeDo";
-import { CoreCapabilities } from "@/components/CoreCapabilities";
-import { Industries } from "@/components/Industries";
-import { HowItWorks } from "@/components/HowItWorks";
-import { Examples } from "@/components/Examples";
-import { BusinessOutcomes } from "@/components/BusinessOutcomes";
-import { FAQ } from "@/components/FAQ";
-import { FinalCTA } from "@/components/FinalCTA";
-import { Footer } from "@/components/Footer";
-import { ScrollProgress } from "@/components/ScrollProgress";
-import { CursorTrail } from "@/components/CursorTrail";
-import { BackgroundParticles } from "@/components/BackgroundParticles";
+export const metadata: Metadata = {
+  title: "AI Solutions | Practical AI for Real Business Work",
+  description:
+    "Voice AI, Knowledge Bases, Prompt Engineering, and AI MVPs. Built to support teams, reduce manual work, and fit existing processes.",
+  openGraph: {
+    title: "AI Solutions | Practical AI for Real Business Work",
+    description:
+      "Voice AI, Knowledge Bases, Prompt Engineering, and AI MVPs. Built to support teams, reduce manual work, and fit existing processes.",
+  },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "How long does it take to build?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Typical implementations take 2–6 weeks depending on scope.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do you work with our existing tools?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. We integrate with your current stack whenever possible.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What about data security?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "We design with access control, data isolation, and security best practices.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do we own the solution?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. You own the implementation and can extend it further.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Is this suitable for small teams?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Many solutions are designed specifically for small and mid-size teams.",
+      },
+    },
+  ],
+};
 
 export default function Home() {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    const id = requestAnimationFrame(() => setIsLoaded(true));
-    document.documentElement.style.scrollBehavior = "smooth";
-    return () => {
-      cancelAnimationFrame(id);
-      document.documentElement.style.scrollBehavior = "auto";
-    };
-  }, []);
-
   return (
-    <div className="min-h-screen">
-      <ScrollProgress />
-      <CursorTrail />
-      <BackgroundParticles count={30} />
-
-      <div className={`page-curtain ${isLoaded ? "curtain-open" : ""}`}>
-        <div className="curtain-content">
-          <div className="loading-spinner" />
-        </div>
-      </div>
-
-      <div className={`page-content ${isLoaded ? "content-visible" : "content-hidden"}`}>
-        <Hero />
-        <Credentials />
-        <WhatWeDo />
-        <CoreCapabilities />
-        <Industries />
-        <HowItWorks />
-        <Examples />
-        <BusinessOutcomes />
-        <FAQ />
-        <FinalCTA />
-        <Footer />
-      </div>
-
-      <style jsx>{`
-        @keyframes curtain-reveal {
-          0% {
-            clip-path: inset(0 0 0 0);
-          }
-          100% {
-            clip-path: inset(0 0 0 100%);
-          }
-        }
-
-        @keyframes spinner-rotate {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-
-        @keyframes fade-in-content {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-
-        .page-curtain {
-          position: fixed;
-          inset: 0;
-          background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-          z-index: 9999;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: clip-path 1s cubic-bezier(0.77, 0, 0.175, 1);
-        }
-
-        .curtain-open {
-          animation: curtain-reveal 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
-          pointer-events: none;
-        }
-
-        .curtain-content {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 2rem;
-        }
-
-        .loading-spinner {
-          width: 50px;
-          height: 50px;
-          border: 3px solid rgba(59, 130, 246, 0.3);
-          border-top-color: rgb(59, 130, 246);
-          border-radius: 50%;
-          animation: spinner-rotate 1s linear infinite;
-        }
-
-        .content-hidden {
-          opacity: 0;
-        }
-
-        .content-visible {
-          animation: fade-in-content 0.5s ease-out 0.5s forwards;
-          opacity: 0;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .page-curtain,
-          .loading-spinner,
-          .content-visible {
-            animation: none;
-          }
-          .page-curtain {
-            display: none;
-          }
-          .content-hidden,
-          .content-visible {
-            opacity: 1;
-          }
-        }
-      `}</style>
-    </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <HomePageClient />
+    </>
   );
 }

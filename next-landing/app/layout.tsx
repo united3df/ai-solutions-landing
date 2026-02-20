@@ -12,10 +12,61 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://example.com";
+
 export const metadata: Metadata = {
-  title: "Create AI Solutions Overview | Practical AI for Real Business Work",
+  metadataBase: new URL(baseUrl),
+  title: {
+    default: "AI Solutions | Practical AI for Real Business Work",
+    template: "%s | AI Solutions",
+  },
   description:
     "Voice AI, Knowledge Bases, Prompt Engineering, and AI MVPs. Built to support teams, reduce manual work, and fit existing processes.",
+  keywords: [
+    "AI consulting",
+    "voice AI",
+    "knowledge base",
+    "prompt engineering",
+    "AI MVP",
+    "business automation",
+  ],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: baseUrl,
+    siteName: "AI Solutions",
+    title: "AI Solutions | Practical AI for Real Business Work",
+    description:
+      "Voice AI, Knowledge Bases, Prompt Engineering, and AI MVPs. Built to support teams, reduce manual work, and fit existing processes.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Solutions | Practical AI for Real Business Work",
+    description:
+      "Voice AI, Knowledge Bases, Prompt Engineering, and AI MVPs. Built to support teams, reduce manual work, and fit existing processes.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "AI Solutions",
+  description:
+    "Voice AI, Knowledge Bases, Prompt Engineering, and AI MVPs. Built to support teams, reduce manual work, and fit existing processes.",
+  url: baseUrl,
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "AI Solutions",
+  url: baseUrl,
+  description:
+    "Practical AI for Real Business Work. Voice AI, Knowledge Bases, Prompt Engineering, and AI MVPs.",
 };
 
 export default function RootLayout({
@@ -25,6 +76,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteSchema),
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

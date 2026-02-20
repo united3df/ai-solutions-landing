@@ -2,6 +2,7 @@
 
 interface ImportMetaEnv {
   readonly VITE_CALENDLY_URL?: string;
+  readonly VITE_CLARITY_ID?: string;
 }
 
 interface ImportMeta {

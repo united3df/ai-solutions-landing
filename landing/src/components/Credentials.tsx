@@ -3,6 +3,7 @@ import { Star, ExternalLink, Award, Users, Briefcase } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import { Button } from "./ui/button";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
+import { useClarity } from "../hooks/useClarity";
 
 const reviews = [
   {
@@ -48,6 +49,7 @@ function StarRating({ rating }: { rating: number }) {
 export function Credentials() {
   const sectionRef = useRef<HTMLElement>(null);
   const isVisible = useIntersectionObserver(sectionRef);
+  useClarity();
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
   return (

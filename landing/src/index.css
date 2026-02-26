@@ -2610,3 +2610,25 @@ html {
   z-index: 100001 !important;
   position: relative !important;
 }
+
+/* Dev blog palette */
+:root {
+  --color-dev-bg: #0a0a08;
+  --color-dev-surface: #111110;
+  --color-dev-border: #1e1e1a;
+  --color-dev-accent: #e8ff47;
+  --color-dev-text: #e8e6df;
+  --color-dev-muted: #6b6960;
+}
+
+@keyframes dev-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+}

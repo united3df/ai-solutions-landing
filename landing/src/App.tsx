@@ -17,6 +17,10 @@ import { BackgroundParticles } from "./components/BackgroundParticles";
 import { AIPageApp } from "./components/AIPageApp";
 import { TermsOfService } from "./components/TermsOfService";
 import { PrivacyPolicy } from "./components/PrivacyPolicy";
+import { BlogLayout } from "./components/blog/BlogLayout";
+import { BlogList } from "./components/blog/BlogList";
+import { BlogPost } from "./components/blog/BlogPost";
+import { AdminPage } from "./components/admin/AdminPage";
 
 function LandingPage() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -160,6 +164,11 @@ export default function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/ai-page/*" element={<AIPageApp />} />
+        <Route path="/blog" element={<BlogLayout />}>
+          <Route index element={<BlogList />} />
+          <Route path=":slug" element={<BlogPost />} />
+        </Route>
+        <Route path="/admin" element={<AdminPage />} />
         <Route path="/terms" element={<TermsOfService />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
       </Routes>

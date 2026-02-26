@@ -12,5 +12,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/ai-page/transcribe`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${baseUrl}/ai-page/voice-agent`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${baseUrl}/dev`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/blog`, changeFrequency: "weekly", priority: 0.8 },
   ];
 }

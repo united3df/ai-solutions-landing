@@ -1,8 +1,17 @@
 "use client";
 
-import { useClarity } from "@/hooks/useClarity";
+import { useEffect } from "react";
+import { clarity } from "react-microsoft-clarity";
+import { getUtmParams } from "@/lib/ads/url-params";
+import { setClarityUtmTags } from "@/lib/ads/clarity-utm";
+
+const FALLBACK_CLARITY_ID = "uiyrsokzzw";
 
 export function ClarityInit() {
-  useClarity();
+  useEffect(() => {
+    const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID ?? FALLBACK_CLARITY_ID;
+    clarity.init(clarityId);
+    setClarityUtmTags(getUtmParams());
+  }, []);
   return null;
 }

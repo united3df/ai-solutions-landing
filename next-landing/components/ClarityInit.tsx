@@ -12,7 +12,7 @@ export function ClarityInit() {
     const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID ?? FALLBACK_CLARITY_ID;
     clarity.init(clarityId);
     setClarityUtmTags(getUtmParams());
-    console.log("[Clarity] integrated", { projectId:  });
+    console.log("[Clarity] integrated",);
   }, []);
   return null;
 }

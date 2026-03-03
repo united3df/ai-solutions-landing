@@ -1,17 +1,23 @@
-import { clarity } from "react-microsoft-clarity";
 import type { UtmParams } from "./url-params";
+
+declare global {
+  interface Window {
+    clarity?: (cmd: string, key: string, value: string) => void;
+  }
+}
 
 /**
  * Passes UTM params to Clarity for session filtering in dashboard.
- * Call after clarity.init().
+ * Call after Clarity script has loaded.
  */
 export function setClarityUtmTags(utmParams: UtmParams): void {
   if (typeof window === "undefined") return;
-  if (!clarity.hasStarted()) return;
+  const fn = window.clarity;
+  if (!fn || typeof fn !== "function") return;
 
-  clarity.setTag("utm_source", utmParams.utm_source ?? "direct");
-  clarity.setTag("utm_medium", utmParams.utm_medium ?? "none");
-  clarity.setTag("utm_campaign", utmParams.utm_campaign ?? "none");
-  clarity.setTag("utm_term", utmParams.utm_term ?? "none");
-  clarity.setTag("utm_content", utmParams.utm_content ?? "none");
+  fn("set", "utm_source", utmParams.utm_source ?? "direct");
+  fn("set", "utm_medium", utmParams.utm_medium ?? "none");
+  fn("set", "utm_campaign", utmParams.utm_campaign ?? "none");
+  fn("set", "utm_term", utmParams.utm_term ?? "none");
+  fn("set", "utm_content", utmParams.utm_content ?? "none");
 }

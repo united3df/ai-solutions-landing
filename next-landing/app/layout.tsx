@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ClarityInit } from "@/components/ClarityInit";
+import Metrics from "./metrics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -94,7 +95,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ClarityInit />
+        <Metrics />
+        {process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID && (
+          <Script
+            id="hs-script-loader"
+            src={`https://js.hs-scripts.com/${process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID}.js`}
+            strategy="afterInteractive"
+          />
+        )}
         {children}
       </body>
     </html>

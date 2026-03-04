@@ -11,6 +11,7 @@ import { Examples } from "@/components/Examples";
 import { BusinessOutcomes } from "@/components/BusinessOutcomes";
 import { FAQ } from "@/components/FAQ";
 import { FinalCTA } from "@/components/FinalCTA";
+import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { CursorTrail } from "@/components/CursorTrail";
@@ -51,6 +52,7 @@ export function HomePageClient() {
         <BusinessOutcomes />
         <FAQ />
         <FinalCTA />
+        <ContactSection />
         <Footer />
       </div>
 

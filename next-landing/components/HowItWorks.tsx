@@ -5,7 +5,6 @@ import { Button } from "./ui/button";
 import { useRef, useState, MouseEvent } from "react";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import { useCountAnimation } from "@/hooks/useCountAnimation";
-import { openCalendlyPopup } from "@/lib/utils/calendly";
 
 const steps = [
   {
@@ -83,13 +82,11 @@ export function HowItWorks() {
           </div>
 
           <div className={`text-center mt-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: '1200ms' }}>
-            <Button 
-              size="lg" 
-              className="gap-2 group"
-              onClick={() => openCalendlyPopup()}
-            >
-              Schedule a use-case discussion
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <Button size="lg" className="gap-2 group" asChild>
+              <a href="#contact">
+                Schedule a use-case discussion
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
             </Button>
           </div>
         </div>

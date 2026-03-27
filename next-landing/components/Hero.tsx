@@ -1,15 +1,15 @@
 "use client";
 
-import { ArrowRight, Play, ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
 import { AnimatedGradientBackground } from "./AnimatedGradientBackground";
 import { FloatingParticles } from "./FloatingParticles";
-import { use3DTilt } from "@/hooks/use3DTilt";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
+const HERO_YOUTUBE_VIDEO_ID = "S4KDBAZNuwo";
+
 export function Hero() {
-  const { tilt, handleMouseMove, handleMouseLeave } = use3DTilt(8);
   const router = useRouter();
   const [typewriterText, setTypewriterText] = useState("");
   const fullText = "Practical AI for Real Business Work";
@@ -87,32 +87,16 @@ export function Hero() {
 
           {/* Video Block */}
           <div className="pt-8 fade-in-scale delay-1100">
-            <div 
-              className="rounded-lg overflow-hidden shadow-2xl bg-slate-900 aspect-video relative group video-container"
-              onMouseMove={handleMouseMove}
-              onMouseLeave={handleMouseLeave}
-              style={{
-                transform: `perspective(1000px) rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg)`,
-                transition: 'transform 0.2s ease-out',
-              }}
-            >
-              <div className="absolute inset-0 video-gradient-animated">
-                <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-blue-900/90 to-slate-900/90 backdrop-blur-sm">
-                  <div className="play-button-container">
-                    <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center group-hover:bg-white/20 group-hover:scale-110 transition-all duration-300 cursor-pointer relative">
-                      <div className="absolute inset-0 rounded-full animate-ping-slow bg-white/20" />
-                      <Play className="w-10 h-10 text-white ml-1 relative z-10" />
-                    </div>
-                  </div>
-                  <p className="text-white mt-6 text-lg">
-                    How We Apply AI in Real Business Cases
-                  </p>
-                  <p className="text-white/70 text-sm mt-2">
-                    60–90 sec: voice AI, knowledge base, MVP example
-                  </p>
-                </div>
-              </div>
-              <div className="glow-border" />
+            <div className="rounded-lg overflow-hidden shadow-2xl bg-slate-900 aspect-video relative ring-1 ring-slate-200/80">
+              <iframe
+                className="absolute inset-0 h-full w-full"
+                src={`https://www.youtube.com/embed/${HERO_YOUTUBE_VIDEO_ID}`}
+                title="How We Apply AI in Real Business Cases"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                loading="lazy"
+              />
             </div>
           </div>
 
@@ -143,11 +127,6 @@ export function Hero() {
           50% { opacity: 0.8; }
         }
 
-        @keyframes ping-slow {
-          0% { transform: scale(1); opacity: 1; }
-          75%, 100% { transform: scale(2); opacity: 0; }
-        }
-
         @keyframes bounce-slow {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(10px); }
@@ -173,12 +152,6 @@ export function Hero() {
             opacity: 1;
             transform: scale(1);
           }
-        }
-
-        @keyframes gradient-wave {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
         }
 
         .typewriter-cursor {
@@ -211,42 +184,13 @@ export function Hero() {
           animation: pulse-glow 2s ease-in-out infinite;
         }
 
-        .animate-ping-slow {
-          animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-        }
-
         .animate-bounce-slow {
           animation: bounce-slow 2s ease-in-out infinite;
-        }
-
-        .video-container {
-          will-change: transform;
-        }
-
-        .glow-border {
-          position: absolute;
-          inset: -2px;
-          border-radius: inherit;
-          padding: 2px;
-          background: linear-gradient(45deg, #3b82f6, #8b5cf6, #06b6d4, #3b82f6);
-          background-size: 300% 300%;
-          animation: gradient-wave 4s ease infinite;
-          -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-          -webkit-mask-composite: xor;
-          mask-composite: exclude;
-          opacity: 0;
-          transition: opacity 0.3s;
-          pointer-events: none;
-        }
-
-        .video-container:hover .glow-border {
-          opacity: 0.6;
         }
 
         @media (prefers-reduced-motion: reduce) {
           .typewriter-cursor,
           .animate-pulse-glow,
-          .animate-ping-slow,
           .animate-bounce-slow,
           .fade-in-up,
           .fade-in-scale {

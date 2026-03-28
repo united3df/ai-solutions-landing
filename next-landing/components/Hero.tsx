@@ -6,6 +6,7 @@ import { AnimatedGradientBackground } from "./AnimatedGradientBackground";
 import { FloatingParticles } from "./FloatingParticles";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { getDevBlogSiteUrl } from "@/lib/devBlogSite";
 
 const HERO_YOUTUBE_VIDEO_ID = "S4KDBAZNuwo";
 
@@ -79,7 +80,14 @@ export function Hero() {
               size="lg" 
               variant="outline" 
               className="gap-2 cta-button-secondary hover:scale-105 transition-transform duration-300"
-              onClick={() => router.push("/dev")}
+              onClick={() => {
+                const url = getDevBlogSiteUrl("/dev");
+                if (url.startsWith("http")) {
+                  window.location.href = url;
+                } else {
+                  router.push(url);
+                }
+              }}
             >
               Developer portfolio
             </Button>

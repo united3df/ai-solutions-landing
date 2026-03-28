@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, DM_Mono, DM_Sans } from "next/font/google";
+import { getDevAppOrigin } from "@/lib/site";
 
 const bebasNeue = Bebas_Neue({
   weight: "400",
@@ -21,7 +22,7 @@ const dmSans = DM_Sans({
   subsets: ["latin"],
 });
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://example.com";
+const baseUrl = getDevAppOrigin();
 const devUrl = `${baseUrl}/dev`;
 
 const seoDescription =

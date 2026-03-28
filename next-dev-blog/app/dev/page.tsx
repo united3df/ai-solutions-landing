@@ -12,8 +12,9 @@ import {
   DevCTA,
   DevFooter,
 } from "@/components/dev";
+import { getDevAppOrigin } from "@/lib/site";
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://example.com";
+const baseUrl = getDevAppOrigin();
 
 const personSchema = {
   "@context": "https://schema.org",

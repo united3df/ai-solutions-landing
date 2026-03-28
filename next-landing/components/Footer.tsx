@@ -4,6 +4,7 @@ import React from "react";
 import { useRef } from "react";
 import Link from "next/link";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import { getDevBlogSiteUrl } from "@/lib/devBlogSite";
 
 export function Footer() {
   const footerRef = useRef<HTMLElement>(null);
@@ -16,7 +17,7 @@ export function Footer() {
           <p className="text-lg footer-logo">Practical AI for Business</p>
           <div className="flex flex-wrap justify-center gap-4 text-sm">
             <Link
-              href="/dev"
+              href={getDevBlogSiteUrl("/dev")}
               className="text-slate-400 hover:text-white transition-colors cursor-pointer"
             >
               Developer

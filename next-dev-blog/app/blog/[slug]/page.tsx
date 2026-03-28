@@ -6,6 +6,7 @@ import remarkGfm from "remark-gfm";
 import { BlogCalendlyCta } from "@/components/blog/BlogCalendlyCta";
 import { getPostBySlug } from "@/lib/services/blogApi";
 import { splitMarkdownAtMiddle } from "@/lib/utils/splitMarkdownAtMiddle";
+import { getDevAppOrigin } from "@/lib/site";
 
 export async function generateMetadata({
   params,
@@ -15,7 +16,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) return {};
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://example.com";
+  const baseUrl = getDevAppOrigin();
   return {
     title: post.metaTitle || post.title,
     description: post.metaDesc || post.excerpt,

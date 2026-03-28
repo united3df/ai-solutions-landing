@@ -100,7 +100,7 @@ export function DevContactForm() {
   return (
     <section
       id="contact"
-      className="border-t border-dev-border bg-dev-surface/40 py-20 px-6 md:px-12 relative overflow-hidden"
+      className="scroll-mt-24 border-t border-dev-border bg-dev-surface/40 py-20 px-6 md:px-12 relative overflow-hidden"
     >
       <div className="max-w-2xl mx-auto relative z-10">
         <div className="flex items-center justify-center gap-3 font-[var(--font-dev-mono)] text-[11px] text-dev-accent tracking-[0.12em] uppercase mb-4">

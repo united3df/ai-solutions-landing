@@ -48,12 +48,12 @@ export function DevNav() {
         >
           Blog
         </Link>
-        <Link
-          href="#contact"
+        <a
+          href="/#contact"
           className="font-[var(--font-dev-mono)] text-xs py-2.5 px-5 bg-dev-accent text-black tracking-[0.06em] uppercase font-medium hover:bg-white hover:-translate-y-0.5 transition-all rounded-full"
         >
           Ship Your MVP →
-        </Link>
+        </a>
       </div>
     </nav>
   );

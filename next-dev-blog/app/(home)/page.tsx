@@ -1,9 +1,10 @@
 import {
   DevNav,
   DevHero,
+  DevPositionStrip,
   DevTicker,
-  DevAbout,
   DevServices,
+  DevCases,
   DevStack,
   DevOutcomes,
   DevTestimonials,
@@ -20,9 +21,9 @@ const baseUrl = getDevAppOrigin();
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "AI4B2B Dev",
+  name: "AI4B2B",
   description:
-    "Full-Stack & AI developer with 8+ years experience. Builds production SaaS with multi-step journeys, milestone tracking, RAG-based assistants, semantic search with embeddings. Uses Cursor, Claude, OpenClaw for rapid RAG pipelines and LLM integrations. Y Combinator, Techstars, Fortune 500. Scaled to $2M+ ARR.",
+    "External AI automation team: production-grade automations, internal tools, and AI products shipped weekly. Voice agents, RAG, SaaS MVPs, integrations. Data ownership, no lock-in. Y Combinator, Fortune 500 experience.",
   url: baseUrl,
   jobTitle: "Full-Stack & AI Developer",
   knowsAbout: [
@@ -44,10 +45,10 @@ const serviceSchema = {
   "@type": "Service",
   name: "AI & Full-Stack Development",
   description:
-    "AI Voice Agents, AI Knowledge Bases, RAG-based assistants, semantic search, MVP development. Production SaaS with structured multi-step journeys, milestone tracking, and contextual AI in user flows.",
+    "AI Voice Agents, RAG knowledge bases, AI MVP and SaaS development, internal tools and automations. Embedded partner delivering weekly — production systems integrated into your stack.",
   provider: {
     "@type": "Person",
-    name: "AI4B2B Dev",
+    name: "AI4B2B",
   },
   areaServed: "Worldwide",
   serviceType: ["AI Development", "Full-Stack Development", "MVP Development", "RAG Pipelines"],
@@ -62,7 +63,7 @@ const faqSchema = {
       name: "Do you build RAG-based AI assistants?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. I deliver RAG-based assistants, semantic search with embeddings, and contextual AI embedded directly into user flows — not just chat, but AI tied to user progress and platform logic.",
+        text: "Yes. We deliver RAG-based assistants, semantic search with embeddings, and contextual AI embedded directly into user flows — not just chat, but AI tied to user progress and platform logic.",
       },
     },
     {
@@ -70,7 +71,7 @@ const faqSchema = {
       name: "What AI tools do you use for development?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "I use Cursor, Claude, and OpenClaw daily to accelerate delivery — from specs to scoped tasks, scaffolding features, and rapidly prototyping RAG pipelines, LLM integrations, and automation flows.",
+        text: "We use Cursor, Claude, and OpenClaw daily to accelerate delivery — from specs to scoped tasks, scaffolding features, and rapidly prototyping RAG pipelines, LLM integrations, and automation flows.",
       },
     },
     {
@@ -78,7 +79,7 @@ const faqSchema = {
       name: "Do you build SaaS with multi-step workflows?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. I build production SaaS platforms with structured multi-step journeys, milestone tracking, resume logic, clean progress dashboards, state-driven workflows, and admin-controlled content systems.",
+        text: "Yes. We build production SaaS platforms with structured multi-step journeys, milestone tracking, resume logic, clean progress dashboards, state-driven workflows, and admin-controlled content systems.",
       },
     },
   ],
@@ -103,9 +104,10 @@ export default function HomePage() {
       <main className="flex flex-1 flex-col">
         <div className="flex-1">
           <DevHero />
+          <DevPositionStrip />
           <DevTicker />
-          <DevAbout />
           <DevServices />
+          <DevCases />
           <DevStack />
           <DevOutcomes />
           <DevTestimonials />

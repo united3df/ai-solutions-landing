@@ -1,8 +1,9 @@
 export { DevNav } from "./DevNav";
 export { DevHero } from "./DevHero";
+export { DevPositionStrip } from "./DevPositionStrip";
 export { DevTicker } from "./DevTicker";
-export { DevAbout } from "./DevAbout";
 export { DevServices } from "./DevServices";
+export { DevCases } from "./DevCases";
 export { DevStack } from "./DevStack";
 export { DevOutcomes } from "./DevOutcomes";
 export { DevTestimonials } from "./DevTestimonials";

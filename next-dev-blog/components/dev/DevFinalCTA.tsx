@@ -34,7 +34,7 @@ export function DevFinalCTA() {
           But Want a Clear Answer?
         </h2>
 
-        <div className="space-y-3 stext-left max-w-md mx-auto">
+        <div className="space-y-3 text-left max-w-md mx-auto">
           <p className="font-[var(--font-dev-sans)] text-base text-dev-muted">If you&apos;re unsure:</p>
           <ul className="space-y-2 font-[var(--font-dev-sans)] text-sm text-dev-text">
             {["Where AI fits", "What's realistic", "Or what's worth building first"].map((item) => (

@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "MVPs. AI. Built Fast & Right. | AI4B2B Dev";
+export const alt = "AI4B2B · Your External AI Automation Team";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -36,7 +36,7 @@ export default async function Image() {
               letterSpacing: "0.02em",
             }}
           >
-            AI4B2B Dev
+            AI4B2B
           </div>
           <div
             style={{
@@ -46,7 +46,7 @@ export default async function Image() {
               maxWidth: 800,
             }}
           >
-            MVPs. AI. Built Fast & Right.
+            Your External AI Automation Team
           </div>
           <div
             style={{
@@ -55,7 +55,7 @@ export default async function Image() {
               textAlign: "center",
             }}
           >
-            Full-Stack & AI · Y Combinator · Techstars · $2M+ ARR
+            Ship weekly · Voice · RAG · SaaS · Automations
           </div>
         </div>
       </div>

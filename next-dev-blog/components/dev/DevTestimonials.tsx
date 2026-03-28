@@ -5,20 +5,23 @@ import { useRef, useEffect } from "react";
 const TESTIMONIALS = [
   {
     stars: "★★★★½",
-    text: '"AI4B2B has created a good development team. They delivered exactly what was needed, on time and without issues."',
-    author: "Founder, NFT Marketplace",
-    role: "Web & Mobile App Development · Clutch.co",
+    text: '"They delivered exactly what was needed, on time and without issues. A rare team that actually ships."',
+    initials: "NF",
+    author: "NFT Marketplace Founder",
+    role: "Web & Mobile · Clutch.co · 4.7/5",
   },
   {
     stars: "★★★★★",
-    text: '"They understood our project and contributed their own ideas. The team went beyond just executing — they truly engaged with the problem."',
+    text: '"They understood our project and contributed their own ideas. Went beyond executing — they truly engaged with the problem."',
+    initials: "TF",
     author: "Thomas Faulhaber, CEO",
-    role: "IT Consulting & SI · Clutch.co",
+    role: "IT Consulting · Clutch.co · Verified",
   },
   {
     stars: "★★★★½",
-    text: '"They were very professional and easy to work with. Communication was smooth and the output quality exceeded our expectations."',
-    author: "Owner, SaaS Company",
+    text: '"Communication was smooth and the output quality exceeded our expectations. They treat it like their own product."',
+    initials: "SC",
+    author: "SaaS Company Owner",
     role: "Staff Augmentation · Clutch.co",
   },
 ];
@@ -49,18 +52,30 @@ export function DevTestimonials() {
         <span className="w-6 h-px bg-dev-accent" />
         Social Proof
       </div>
-      <h2 className="font-[var(--font-dev-display)] text-[clamp(40px,5vw,64px)] leading-none mb-6">What Clients Say</h2>
+      <h2 className="font-[var(--font-dev-display)] text-[clamp(40px,5vw,64px)] leading-none mb-6">
+        What Clients Say
+      </h2>
       <p className="text-base text-dev-muted max-w-[560px] font-light leading-[1.7] mb-16">
         Verified reviews from real clients on Clutch.co and Upwork.
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-dev-border border border-dev-border">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {TESTIMONIALS.map((t) => (
-          <div key={t.author} className="bg-dev-surface p-9 flex flex-col gap-4">
+          <div
+            key={t.author}
+            className="rounded-xl border border-dev-border bg-dev-surface p-8 flex flex-col gap-4"
+          >
             <div className="text-dev-accent text-sm tracking-[2px]">{t.stars}</div>
-            <p className="text-[15px] text-dev-text font-light leading-[1.7] italic">{t.text}</p>
-            <div className="mt-auto pt-4 border-t border-dev-border">
-              <div className="font-[var(--font-dev-mono)] text-xs text-dev-accent tracking-[0.06em] uppercase">{t.author}</div>
-              <div className="font-[var(--font-dev-mono)] text-[11px] text-dev-muted mt-0.5">{t.role}</div>
+            <p className="text-[15px] text-dev-text font-light leading-[1.7] italic flex-1 font-[var(--font-dev-display)]">
+              {t.text}
+            </p>
+            <div className="mt-auto pt-4 border-t border-dev-border flex items-center gap-3">
+              <div className="flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full border border-dev-border bg-[#161614] text-[0.72rem] font-semibold text-dev-muted">
+                {t.initials}
+              </div>
+              <div>
+                <div className="text-[0.83rem] font-medium text-dev-text">{t.author}</div>
+                <div className="text-[0.75rem] text-dev-muted mt-0.5">{t.role}</div>
+              </div>
             </div>
           </div>
         ))}

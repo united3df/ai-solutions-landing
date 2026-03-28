@@ -3,10 +3,10 @@
 import { useRef, useEffect } from "react";
 
 const OUTCOMES = [
-  { before: "10 min", after: "4 min", label: "Avg Response Time\nReduced 2×+" },
-  { before: "Error 5%", after: "2%", label: "Error Rate\nConsistent Quality" },
-  { before: "Manual ops", after: "−180h", label: "Hours/Month Saved\nvia AI Automation" },
-  { before: "3 weeks", after: "7d", label: "Onboarding Time\nFaster Knowledge Access" },
+  { before: "10 min", after: "4m", label: "Avg response time" },
+  { before: "5% errors", after: "2%", label: "Error rate at scale" },
+  { before: "3 weeks", after: "7d", label: "Onboarding time" },
+  { before: "Manual ops", after: "−180h", label: "Hours/month reclaimed" },
 ];
 
 export function DevOutcomes() {
@@ -33,20 +33,26 @@ export function DevOutcomes() {
     >
       <div className="flex items-center gap-3 font-[var(--font-dev-mono)] text-[11px] text-dev-accent tracking-[0.12em] uppercase mb-4">
         <span className="w-6 h-px bg-dev-accent" />
-        Results
+        Business Outcomes
       </div>
-      <h2 className="font-[var(--font-dev-display)] text-[clamp(40px,5vw,64px)] leading-none mb-6">Business Outcomes</h2>
-      <p className="text-base text-dev-muted max-w-[560px] font-light leading-[1.7] mb-16">
-        Measurable operational improvements — not just shipping code, but moving the metrics that matter.
+      <h2 className="font-[var(--font-dev-display)] text-[clamp(40px,5vw,64px)] leading-none mb-6">
+        Metrics that actually
+        <br />
+        move the needle.
+      </h2>
+      <p className="text-base text-dev-muted max-w-[520px] font-light leading-[1.7] mb-16">
+        Not vanity metrics. Operational improvements you&apos;ll see in the first 30 days.
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-dev-border border border-dev-border mb-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-dev-border border border-dev-border rounded-xl overflow-hidden mb-0">
         {OUTCOMES.map((o) => (
-          <div key={o.label} className="bg-dev-surface p-10">
-            <div className="font-[var(--font-dev-mono)] text-[13px] text-dev-muted line-through mb-1">{o.before}</div>
-            <div className="font-[var(--font-dev-display)] text-[44px] text-dev-accent leading-none mb-3">{o.after}</div>
-            <div className="font-[var(--font-dev-mono)] text-[11px] text-dev-muted tracking-[0.06em] uppercase leading-[1.5] whitespace-pre-line">
-              {o.label}
+          <div key={o.label} className="bg-dev-surface p-8 md:p-10 text-center">
+            <div className="font-[var(--font-dev-mono)] text-[0.9rem] text-dev-muted/70 line-through decoration-red-500/70 mb-1">
+              {o.before}
             </div>
+            <div className="font-[var(--font-dev-display)] text-[2.5rem] md:text-[2.6rem] text-dev-accent leading-none mb-2">
+              {o.after}
+            </div>
+            <div className="text-[0.78rem] text-dev-muted font-light">{o.label}</div>
           </div>
         ))}
       </div>

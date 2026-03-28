@@ -25,11 +25,11 @@ const dmSans = DM_Sans({
 const baseUrl = getDevAppOrigin();
 
 const seoDescription =
-  "Full-Stack & AI developer with 8+ years experience. Production SaaS with multi-step journeys, RAG-based assistants, semantic search. RAG pipelines, LLM integrations, Cursor/Claude. Y Combinator, Techstars, Fortune 500. $2M+ ARR scaled.";
+  "Your external AI team — pre-trained, ready to ship weekly. AI automations, internal tools, and AI products embedded in your business. Voice agents, RAG, SaaS MVPs. No lock-in. Full data ownership.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
-  title: "MVPs. AI. Built Fast & Right. | AI4B2B Dev",
+  title: "AI4B2B · Your External AI Automation Team",
   description: seoDescription,
   keywords: [
     "full-stack developer",
@@ -51,13 +51,13 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: baseUrl,
-    siteName: "AI4B2B Dev",
-    title: "MVPs. AI. Built Fast & Right. | AI4B2B Dev",
+    siteName: "AI4B2B",
+    title: "AI4B2B · Your External AI Automation Team",
     description: seoDescription,
   },
   twitter: {
     card: "summary_large_image",
-    title: "MVPs. AI. Built Fast & Right. | AI4B2B Dev",
+    title: "AI4B2B · Your External AI Automation Team",
     description: seoDescription,
   },
   robots: {

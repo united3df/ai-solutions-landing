@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
   async redirects() {
     if (!devBlogBase) return [];
     return [
-      { source: "/dev", destination: `${devBlogBase}/dev`, permanent: false },
+      { source: "/dev", destination: `${devBlogBase}/`, permanent: true },
       { source: "/blog", destination: `${devBlogBase}/blog`, permanent: false },
       {
         source: "/blog/:slug",

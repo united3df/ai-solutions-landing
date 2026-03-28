@@ -81,7 +81,7 @@ export function Hero() {
               variant="outline" 
               className="gap-2 cta-button-secondary hover:scale-105 transition-transform duration-300"
               onClick={() => {
-                const url = getDevBlogSiteUrl("/dev");
+                const url = getDevBlogSiteUrl("/");
                 if (url.startsWith("http")) {
                   window.location.href = url;
                 } else {

@@ -22,7 +22,7 @@ const personSchema = {
   name: "AI4B2B Dev",
   description:
     "Full-Stack & AI developer with 8+ years experience. Builds production SaaS with multi-step journeys, milestone tracking, RAG-based assistants, semantic search with embeddings. Uses Cursor, Claude, OpenClaw for rapid RAG pipelines and LLM integrations. Y Combinator, Techstars, Fortune 500. Scaled to $2M+ ARR.",
-  url: `${baseUrl}/dev`,
+  url: baseUrl,
   jobTitle: "Full-Stack & AI Developer",
   knowsAbout: [
     "Full-Stack Development",
@@ -83,7 +83,7 @@ const faqSchema = {
   ],
 };
 
-export default function DevPage() {
+export default function HomePage() {
   return (
     <div className="min-h-screen bg-dev-bg text-dev-text text-base leading-relaxed">
       <script

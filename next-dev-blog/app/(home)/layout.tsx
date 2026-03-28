@@ -23,7 +23,6 @@ const dmSans = DM_Sans({
 });
 
 const baseUrl = getDevAppOrigin();
-const devUrl = `${baseUrl}/dev`;
 
 const seoDescription =
   "Full-Stack & AI developer with 8+ years experience. Production SaaS with multi-step journeys, RAG-based assistants, semantic search. RAG pipelines, LLM integrations, Cursor/Claude. Y Combinator, Techstars, Fortune 500. $2M+ ARR scaled.";
@@ -51,7 +50,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: devUrl,
+    url: baseUrl,
     siteName: "AI4B2B Dev",
     title: "MVPs. AI. Built Fast & Right. | AI4B2B Dev",
     description: seoDescription,
@@ -66,11 +65,11 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: devUrl,
+    canonical: baseUrl,
   },
 };
 
-export default function DevLayout({
+export default function HomeLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

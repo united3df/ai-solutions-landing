@@ -60,7 +60,7 @@ export default function BlogLayout({
         </Link>
         <div className="flex items-center gap-6 md:gap-8">
           <Link
-            href={devAppPath("/dev")}
+            href={devAppPath("/")}
             className="font-[var(--font-dev-mono)] text-xs text-dev-muted tracking-[0.06em] uppercase hover:text-dev-text transition-colors"
           >
             Portfolio
@@ -80,7 +80,7 @@ export default function BlogLayout({
         </div>
         <div className="flex flex-wrap justify-center md:justify-end gap-6 md:gap-8">
           <Link
-            href={devAppPath("/dev")}
+            href={devAppPath("/")}
             className="font-[var(--font-dev-mono)] text-[11px] text-dev-muted tracking-[0.06em] uppercase hover:text-dev-text transition-colors"
           >
             Developer portfolio

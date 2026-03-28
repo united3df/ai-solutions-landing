@@ -17,7 +17,7 @@ export function Footer() {
           <p className="text-lg footer-logo">Practical AI for Business</p>
           <div className="flex flex-wrap justify-center gap-4 text-sm">
             <Link
-              href={getDevBlogSiteUrl("/dev")}
+              href={getDevBlogSiteUrl("/")}
               className="text-slate-400 hover:text-white transition-colors cursor-pointer"
             >
               Development

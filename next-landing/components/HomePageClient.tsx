@@ -30,7 +30,7 @@ export function HomePageClient() {
   }, []);
 
   return (
-    <div className="min-h-screen">
+    <div className="flex min-h-screen flex-col">
       <ScrollProgress />
       <CursorTrail />
       <BackgroundParticles count={30} />
@@ -41,18 +41,22 @@ export function HomePageClient() {
         </div>
       </div>
 
-      <div className={`page-content ${isLoaded ? "content-visible" : "content-hidden"}`}>
-        <Hero />
-        <Credentials />
-        <WhatWeDo />
-        <CoreCapabilities />
-        <Industries />
-        <HowItWorks />
-        <Examples />
-        <BusinessOutcomes />
-        <FAQ />
-        <FinalCTA />
-        <ContactSection />
+      <div
+        className={`page-content flex flex-1 flex-col ${isLoaded ? "content-visible" : "content-hidden"}`}
+      >
+        <div className="flex-1">
+          <Hero />
+          <Credentials />
+          <WhatWeDo />
+          <CoreCapabilities />
+          <Industries />
+          <HowItWorks />
+          <Examples />
+          <BusinessOutcomes />
+          <FAQ />
+          <FinalCTA />
+          <ContactSection />
+        </div>
         <Footer />
       </div>
 

@@ -86,7 +86,7 @@ const faqSchema = {
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-dev-bg text-dev-text text-base leading-relaxed">
+    <div className="flex min-h-screen flex-col bg-dev-bg text-dev-text text-base leading-relaxed">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
@@ -100,18 +100,20 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <DevNav />
-      <main>
-        <DevHero />
-        <DevTicker />
-        <DevAbout />
-        <DevServices />
-        <DevStack />
-        <DevOutcomes />
-        <DevTestimonials />
-        <DevPlatforms />
-        <DevProcess />
-        <DevFinalCTA />
-        <DevContactForm />
+      <main className="flex flex-1 flex-col">
+        <div className="flex-1">
+          <DevHero />
+          <DevTicker />
+          <DevAbout />
+          <DevServices />
+          <DevStack />
+          <DevOutcomes />
+          <DevTestimonials />
+          <DevPlatforms />
+          <DevProcess />
+          <DevFinalCTA />
+          <DevContactForm />
+        </div>
         <DevFooter />
       </main>
     </div>

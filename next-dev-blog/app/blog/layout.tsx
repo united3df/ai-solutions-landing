@@ -48,7 +48,7 @@ export default function BlogLayout({
 }>) {
   return (
     <div
-      className={`dev-page min-h-screen bg-dev-bg text-dev-text ${bebasNeue.variable} ${dmMono.variable} ${dmSans.variable}`}
+      className={`dev-page flex min-h-screen flex-col bg-dev-bg text-dev-text ${bebasNeue.variable} ${dmMono.variable} ${dmSans.variable}`}
       style={{ fontFamily: "var(--font-dev-sans), sans-serif" }}
     >
       <nav className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 md:px-12 py-5 border-b border-dev-border bg-dev-bg/90 backdrop-blur-xl">
@@ -73,7 +73,7 @@ export default function BlogLayout({
           </Link>
         </div>
       </nav>
-      <main className="pt-[80px] pb-20">{children}</main>
+      <main className="flex flex-1 flex-col pt-[80px] pb-20">{children}</main>
       <footer className="border-t border-dev-border py-10 px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-5 bg-dev-surface">
         <div className="font-[var(--font-dev-mono)] text-xs text-dev-accent tracking-[0.08em] uppercase">
           {`// AI4B2B · Blog`}

@@ -5,13 +5,13 @@ import { setupSwagger } from './common/docs/swagger.config';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  const corsOrigins = (process.env.CORS_ORIGINS ?? 'http://localhost:3000,https://ai4b2b.site')
+  const corsOrigins = (process.env.CORS_ORIGINS ?? 'https://ai4b2b.site')
     .split(',')
     .map((o) => o.trim())
     .filter(Boolean);
 
   app.enableCors({
-    origin: corsOrigins.length > 0 ? corsOrigins : ['http://localhost:3000', 'https://ai4b2b.site'],
+    origin: corsOrigins.length > 0 ? corsOrigins : ['https://ai4b2b.site'],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'x-admin-token', 'x-cron-token'],

@@ -6,10 +6,6 @@ const baseUrl = getDevAppOrigin();
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
-  icons: {
-    icon: "/ai4b2b-logo.png",
-    apple: "/ai4b2b-logo.png",
-  },
   title: {
     default: "AI4B2B Dev & Blog",
     template: "%s | AI4B2B",

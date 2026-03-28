@@ -3,7 +3,7 @@
  */
 
 /** Canonical host for this app (dev portfolio + blog). Override with NEXT_PUBLIC_SITE_URL. */
-export const DEFAULT_DEV_APP_ORIGIN = "https://dev.ai4b2b.site";
+export const DEFAULT_DEV_APP_ORIGIN = "https://ai4b2b.site";
 
 export function getDevAppOrigin(): string {
   const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim();

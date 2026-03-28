@@ -8,5 +8,6 @@ export { DevOutcomes } from "./DevOutcomes";
 export { DevTestimonials } from "./DevTestimonials";
 export { DevPlatforms } from "./DevPlatforms";
 export { DevProcess } from "./DevProcess";
-export { DevCTA } from "./DevCTA";
+export { DevFinalCTA } from "./DevFinalCTA";
+export { DevContactForm } from "./DevContactForm";
 export { DevFooter } from "./DevFooter";

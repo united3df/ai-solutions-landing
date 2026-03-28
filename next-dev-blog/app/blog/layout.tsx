@@ -98,13 +98,13 @@ export default function BlogLayout({
             ← Main site
           </Link>
           <Link
-            href={mainSitePath("/terms")}
+            href="/terms"
             className="font-[var(--font-dev-mono)] text-[11px] text-dev-muted tracking-[0.06em] uppercase hover:text-dev-text transition-colors"
           >
             Terms
           </Link>
           <Link
-            href={mainSitePath("/privacy")}
+            href="/privacy"
             className="font-[var(--font-dev-mono)] text-[11px] text-dev-muted tracking-[0.06em] uppercase hover:text-dev-text transition-colors"
           >
             Privacy

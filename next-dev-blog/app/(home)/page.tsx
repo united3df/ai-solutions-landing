@@ -9,7 +9,8 @@ import {
   DevTestimonials,
   DevPlatforms,
   DevProcess,
-  DevCTA,
+  DevFinalCTA,
+  DevContactForm,
   DevFooter,
 } from "@/components/dev";
 import { getDevAppOrigin } from "@/lib/site";
@@ -109,7 +110,8 @@ export default function HomePage() {
         <DevTestimonials />
         <DevPlatforms />
         <DevProcess />
-        <DevCTA />
+        <DevFinalCTA />
+        <DevContactForm />
         <DevFooter />
       </main>
     </div>

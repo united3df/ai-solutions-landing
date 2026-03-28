@@ -34,12 +34,12 @@ export function DevFooter() {
           </a>
         </li>
         <li>
-          <Link href={mainSitePath("/terms")} className="font-[var(--font-dev-mono)] text-[11px] text-dev-muted tracking-[0.06em] uppercase hover:text-dev-text transition-colors">
+          <Link href="/terms" className="font-[var(--font-dev-mono)] text-[11px] text-dev-muted tracking-[0.06em] uppercase hover:text-dev-text transition-colors">
             Terms
           </Link>
         </li>
         <li>
-          <Link href={mainSitePath("/privacy")} className="font-[var(--font-dev-mono)] text-[11px] text-dev-muted tracking-[0.06em] uppercase hover:text-dev-text transition-colors">
+          <Link href="/privacy" className="font-[var(--font-dev-mono)] text-[11px] text-dev-muted tracking-[0.06em] uppercase hover:text-dev-text transition-colors">
             Privacy
           </Link>
         </li>

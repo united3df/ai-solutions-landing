@@ -20,7 +20,7 @@ export function Footer() {
               href={getDevBlogSiteUrl("/dev")}
               className="text-slate-400 hover:text-white transition-colors cursor-pointer"
             >
-              Developer
+              Development
             </Link>
             <span className="text-slate-400">·</span>
             <Link

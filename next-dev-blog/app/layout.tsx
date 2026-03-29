@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Metrics from "./metrics";
 import { getDevAppOrigin } from "@/lib/site";
 
 const baseUrl = getDevAppOrigin();
@@ -21,7 +22,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <Metrics />
+        {children}
+      </body>
     </html>
   );
 }

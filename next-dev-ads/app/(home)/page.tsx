@@ -1,6 +1,7 @@
 import {
   DevNav,
   DevProofBar,
+  DevIntroVideo,
   DevHero,
   DevTicker,
   DevServices,
@@ -104,11 +105,12 @@ export default function HomePage() {
         <div className="flex-1">
           <DevProofBar />
           <DevHero />
+          <DevIntroVideo />
           <DevTicker />
           <DevServices />
           <DevCases />
           <DevProcess />
-          <DevResults />
+          {/* <DevResults /> */}
           <DevTestimonials />
           <DevPlatforms />
           <DevLeadMagnet />

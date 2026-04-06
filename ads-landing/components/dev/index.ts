@@ -1,4 +1,5 @@
 export { DevNav } from "./DevNav";
+export { DevIntroVideo } from "./DevIntroVideo";
 export { DevProofBar } from "./DevProofBar";
 export { DevHero } from "./DevHero";
 export { DevTicker } from "./DevTicker";

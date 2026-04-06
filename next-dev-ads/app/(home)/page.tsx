@@ -7,6 +7,8 @@ import {
   DevCases,
   DevProcess,
   DevResults,
+  DevTestimonials,
+  DevPlatforms,
   DevLeadMagnet,
   DevFinalCTA,
   DevFooter,
@@ -107,6 +109,8 @@ export default function HomePage() {
           <DevCases />
           <DevProcess />
           <DevResults />
+          <DevTestimonials />
+          <DevPlatforms />
           <DevLeadMagnet />
           <DevFinalCTA />
         </div>

@@ -7,6 +7,7 @@ export { DevServices } from "./DevServices";
 export { DevCases } from "./DevCases";
 export { DevProcess } from "./DevProcess";
 export { DevResults } from "./DevResults";
+export { DevPlatforms } from "./DevPlatforms";
 export { DevLeadMagnet } from "./DevLeadMagnet";
 export { DevFinalCTA } from "./DevFinalCTA";
 export { DevFooter } from "./DevFooter";

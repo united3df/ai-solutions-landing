@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CLUTCH_PROFILE_URL, UPWORK_PROFILE_URL } from "@/lib/platform-links";
 
 export function DevFooter() {
   return (
@@ -11,7 +12,7 @@ export function DevFooter() {
       </p>
       <div className="flex flex-wrap gap-6">
         <a
-          href="https://www.upwork.com/freelancers/~0137c6a13e1b92ed62"
+          href={UPWORK_PROFILE_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="text-[0.73rem] text-dev-dim no-underline transition-colors hover:text-dev-accent"
@@ -19,7 +20,7 @@ export function DevFooter() {
           Upwork
         </a>
         <a
-          href="https://clutch.co/profile/ai4b2b"
+          href={CLUTCH_PROFILE_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="text-[0.73rem] text-dev-dim no-underline transition-colors hover:text-dev-accent"

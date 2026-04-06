@@ -1,18 +1,16 @@
-const CLUTCH_PROFILE_URL = "https://clutch.co/profile/ai4b2b";
-const UPWORK_PROFILE_URL =
-  "https://www.upwork.com/freelancers/~0137c6a13e1b92ed62";
+import { CLUTCH_PROFILE_URL, UPWORK_PROFILE_URL } from "@/lib/platform-links";
 
 const platformCardClass =
   "bg-dev-surface p-12 flex items-center gap-8 cursor-pointer no-underline text-inherit";
 
 export function DevPlatforms() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-dev-border border-t border-dev-border">
+    <div className="grid grid-cols-1 border-t border-dev-border md:grid-cols-2 md:gap-px md:bg-dev-border">
       <a
         href={CLUTCH_PROFILE_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className={platformCardClass}
+        className={`${platformCardClass} border-b border-dev-border md:border-b-0`}
       >
         <div className="font-[var(--font-dev-display)] text-[52px] text-dev-accent leading-none shrink-0">
           C

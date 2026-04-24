@@ -1,5 +1,6 @@
 export * from './post-list-item.dto';
 export * from './post-full.dto';
+export * from './create-post.dto';
 export * from './update-post.dto';
 export * from './add-topic.dto';
 export * from './topic.dto';

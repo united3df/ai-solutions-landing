@@ -8,12 +8,15 @@ import {
   Body,
   UseGuards,
   ParseIntPipe,
+  HttpCode,
+  HttpStatus,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { AdminService } from './admin.service';
 import { AdminAuthGuard } from '../common/guards/admin-auth.guard';
 import {
   AdminListPostsDocs,
+  AdminCreatePostDocs,
   AdminGetPostDocs,
   AdminUpdatePostDocs,
   AdminDeletePostDocs,
@@ -25,7 +28,7 @@ import {
   AdminGenerateDocs,
   AdminStatsDocs,
 } from '../common/docs/api-docs';
-import { UpdatePostDto, AddTopicDto } from './dto';
+import { CreatePostDto, UpdatePostDto, AddTopicDto } from './dto';
 
 @ApiTags('admin')
 @Controller('admin')
@@ -37,6 +40,14 @@ export class AdminController {
   @AdminListPostsDocs()
   async listPosts() {
     return this.admin.listPosts();
+  }
+
+  @Post('posts')
+  @HttpCode(HttpStatus.CREATED)
+  @AdminCreatePostDocs()
+  async createPost(@Body() body: CreatePostDto) {
+    const { id } = await this.admin.createPost(body);
+    return { success: true, id };
   }
 
   @Get('posts/:id')

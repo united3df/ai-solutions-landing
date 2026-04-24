@@ -1,8 +1,8 @@
-import { ApiPropertyOptional } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
-export class UpdatePostDto {
-  @ApiPropertyOptional()
-  title?: string;
+export class CreatePostDto {
+  @ApiProperty()
+  title!: string;
 
   @ApiPropertyOptional()
   slug?: string;
@@ -27,4 +27,7 @@ export class UpdatePostDto {
 
   @ApiPropertyOptional()
   metaDesc?: string;
+
+  @ApiPropertyOptional()
+  keyword?: string | null;
 }

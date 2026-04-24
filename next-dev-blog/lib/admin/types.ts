@@ -1,17 +1,23 @@
-export interface PostListItem {
+export interface AdminPostListItem {
   id: number;
   title: string;
   slug: string;
   excerpt: string;
   createdAt: string;
+  status: string;
+  score: number | null;
 }
 
-export interface PostFull extends PostListItem {
+export interface AdminPostFull {
+  id: number;
+  title: string;
+  slug: string;
+  excerpt: string;
+  createdAt: string;
   content: string;
   metaTitle: string;
   metaDesc: string;
   keyword: string | null;
-  /** Present on admin detail responses; omitted on public blog JSON. */
   status?: string;
   score?: number | null;
 }

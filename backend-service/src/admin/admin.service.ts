@@ -1,7 +1,13 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { DatabaseService, PostRow, TopicRow } from '../database/database.service';
 import { BlogService } from '../blog/blog.service';
 import { PostListItem, PostFull } from '../common/types/post.types';
+import { slugifyTitle } from './lib/slugify';
 
 @Injectable()
 export class AdminService {
@@ -27,6 +33,8 @@ export class AdminService {
       metaTitle: row.meta_title,
       metaDesc: row.meta_desc,
       keyword: row.keyword,
+      status: row.status,
+      score: row.score,
     };
   }
 
@@ -50,10 +58,69 @@ export class AdminService {
     return post;
   }
 
+  /** `baseSlug` must already be slugified (e.g. from `slugifyTitle`). */
+  private async allocateUniqueSlug(baseSlug: string): Promise<string> {
+    let candidate = baseSlug;
+    let n = 2;
+    while (await this.database.slugExists(candidate)) {
+      candidate = `${baseSlug}-${n}`;
+      n += 1;
+    }
+    return candidate;
+  }
+
+  async createPost(body: {
+    title: string;
+    slug?: string;
+    content?: string;
+    excerpt?: string;
+    status?: string;
+    meta_title?: string;
+    meta_desc?: string;
+    metaTitle?: string;
+    metaDesc?: string;
+    keyword?: string | null;
+  }): Promise<{ id: number }> {
+    const title = body.title?.trim() ?? '';
+    if (!title) {
+      throw new BadRequestException('title is required');
+    }
+    const slugBase = body.slug?.trim() ? slugifyTitle(body.slug) : slugifyTitle(title);
+    const slug = await this.allocateUniqueSlug(slugBase);
+    const content = body.content ?? '';
+    const excerpt =
+      body.excerpt?.trim() ??
+      (content.length > 0 ? content.slice(0, 280).trim() : title.slice(0, 280));
+    const metaTitle =
+      body.meta_title?.trim() ||
+      body.metaTitle?.trim() ||
+      title;
+    const metaDesc =
+      body.meta_desc?.trim() ||
+      body.metaDesc?.trim() ||
+      excerpt.slice(0, 320);
+    const status =
+      body.status === 'published' || body.status === 'draft' ? body.status : 'draft';
+
+    const id = await this.database.insertPost({
+      title,
+      slug,
+      content,
+      excerpt,
+      status,
+      metaTitle,
+      metaDesc,
+      keyword: body.keyword ?? null,
+      score: null,
+    });
+    return { id };
+  }
+
   async updatePost(
     id: number,
     params: Partial<{
       title: string;
+      slug: string;
       content: string;
       excerpt: string;
       status: string;
@@ -67,6 +134,19 @@ export class AdminService {
     if (!existing) throw new NotFoundException(`Post ${id} not found`);
     const dbParams: Parameters<DatabaseService['updatePost']>[1] = {};
     if (params.title !== undefined) dbParams.title = params.title;
+    if (params.slug !== undefined) {
+      const trimmed = params.slug.trim();
+      if (trimmed.length > 0) {
+        const nextSlug = slugifyTitle(trimmed);
+        if (nextSlug !== existing.slug) {
+          const row = await this.database.getPostBySlug(nextSlug);
+          if (row && row.id !== id) {
+            throw new ConflictException(`Slug "${nextSlug}" is already in use`);
+          }
+          dbParams.slug = nextSlug;
+        }
+      }
+    }
     if (params.content !== undefined) dbParams.content = params.content;
     if (params.excerpt !== undefined) dbParams.excerpt = params.excerpt;
     if (params.status !== undefined) dbParams.status = params.status;

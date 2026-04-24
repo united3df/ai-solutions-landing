@@ -10,6 +10,7 @@ import { CronResponseDto } from '../../blog/dto/cron-response.dto';
 import {
   PostListItemDto,
   PostFullDto,
+  CreatePostDto,
   UpdatePostDto,
   AddTopicDto,
   TopicDto,
@@ -42,6 +43,21 @@ export const AdminListPostsDocs = () =>
     ApiOperation({ summary: 'List all posts' }),
     ADMIN_HEADER,
     ApiResponse({ status: 200, type: [PostListItemDto] }),
+  );
+
+export const AdminCreatePostDocs = () =>
+  applyDecorators(
+    ApiOperation({ summary: 'Create post (draft by default)' }),
+    ADMIN_HEADER,
+    ApiBody({ type: CreatePostDto }),
+    ApiResponse({
+      status: 201,
+      schema: {
+        type: 'object',
+        properties: { success: { type: 'boolean' }, id: { type: 'number' } },
+      },
+    }),
+    ApiResponse({ status: 400, description: 'Invalid body' }),
   );
 
 export const AdminGetPostDocs = () =>

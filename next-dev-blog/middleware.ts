@@ -14,9 +14,17 @@ export async function middleware(request: NextRequest) {
   if (!pathname.startsWith("/admin")) {
     return NextResponse.next();
   }
-  const token = request.cookies.get(SESSION_COOKIE_NAME)?.value;
   const secret = getBlogAdminSessionSecret();
-  if (!token || !secret || !(await verifyAdminSession(token, secret))) {
+  if (!secret) {
+    // BLOG_ADMIN_SESSION_SECRET is not set — misconfiguration, deny access
+    const url = request.nextUrl.clone();
+    url.pathname = "/admin/login";
+    url.searchParams.set("next", pathname);
+    url.searchParams.set("error", "misconfigured");
+    return NextResponse.redirect(url);
+  }
+  const token = request.cookies.get(SESSION_COOKIE_NAME)?.value;
+  if (!token || !(await verifyAdminSession(token, secret))) {
     const url = request.nextUrl.clone();
     url.pathname = "/admin/login";
     url.searchParams.set("next", pathname);

@@ -1,10 +1,9 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 export function LoginForm() {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const nextPath = searchParams.get("next") ?? "/admin";
   const [password, setPassword] = useState("");
@@ -19,14 +18,20 @@ export function LoginForm() {
       const res = await fetch("/api/admin/session", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
         body: JSON.stringify({ password }),
       });
       if (!res.ok) {
         setError("Wrong password");
         return;
       }
-      router.push(nextPath.startsWith("/admin") ? nextPath : "/admin");
-      router.refresh();
+      // Hard navigation so the new httpOnly cookie is always sent on the next request.
+      // router.push can race before the browser applies Set-Cookie, so /admin middleware loops on login.
+      const target =
+        nextPath.startsWith("/admin") && nextPath !== "/admin/login"
+          ? nextPath
+          : "/admin";
+      window.location.assign(target);
     } finally {
       setPending(false);
     }

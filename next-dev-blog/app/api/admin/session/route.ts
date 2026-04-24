@@ -4,11 +4,12 @@ import {
   sessionCookieOptions,
   signAdminSession,
 } from "@/lib/admin/session-core";
+import { getBlogAdminPassword, getBlogAdminSessionSecret } from "@/lib/admin/env";
 import { verifyAdminPassword } from "@/lib/admin/session-password";
 
 export async function POST(req: Request) {
-  const expected = process.env.BLOG_ADMIN_PASSWORD;
-  const secret = process.env.BLOG_ADMIN_SESSION_SECRET;
+  const expected = getBlogAdminPassword();
+  const secret = getBlogAdminSessionSecret();
   if (!expected || !secret) {
     return NextResponse.json(
       { error: "Server misconfiguration" },

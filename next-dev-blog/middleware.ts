@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { getBlogAdminSessionSecret } from "@/lib/admin/env";
 import {
   SESSION_COOKIE_NAME,
   verifyAdminSession,
@@ -14,7 +15,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
   const token = request.cookies.get(SESSION_COOKIE_NAME)?.value;
-  const secret = process.env.BLOG_ADMIN_SESSION_SECRET;
+  const secret = getBlogAdminSessionSecret();
   if (!token || !secret || !(await verifyAdminSession(token, secret))) {
     const url = request.nextUrl.clone();
     url.pathname = "/admin/login";

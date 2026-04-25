@@ -15,8 +15,10 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
   const secret = getBlogAdminSessionSecret();
+  console.log(`[middleware] path=${pathname} secret_defined=${!!secret}`);
   if (!secret) {
     // BLOG_ADMIN_SESSION_SECRET is not set — misconfiguration, deny access
+    console.log("[middleware] REDIRECT misconfigured — BLOG_ADMIN_SESSION_SECRET missing");
     const url = request.nextUrl.clone();
     url.pathname = "/admin/login";
     url.searchParams.set("next", pathname);
@@ -24,7 +26,18 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
   const token = request.cookies.get(SESSION_COOKIE_NAME)?.value;
-  if (!token || !(await verifyAdminSession(token, secret))) {
+  console.log(`[middleware] token_defined=${!!token} token_length=${token?.length ?? 0}`);
+  if (!token) {
+    console.log("[middleware] REDIRECT — no session cookie");
+    const url = request.nextUrl.clone();
+    url.pathname = "/admin/login";
+    url.searchParams.set("next", pathname);
+    return NextResponse.redirect(url);
+  }
+  const valid = await verifyAdminSession(token, secret);
+  console.log(`[middleware] token_valid=${valid}`);
+  if (!valid) {
+    console.log("[middleware] REDIRECT — token verification failed");
     const url = request.nextUrl.clone();
     url.pathname = "/admin/login";
     url.searchParams.set("next", pathname);

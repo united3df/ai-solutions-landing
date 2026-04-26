@@ -1,11 +1,3 @@
-import type { MetadataRoute } from "next";
-import { getDevAppOrigin } from "@/lib/site";
-
-const baseUrl = getDevAppOrigin();
-
-export default function robots(): MetadataRoute.Robots {
-  return {
-    rules: { userAgent: "*", allow: "/" },
-    sitemap: `${baseUrl}/sitemap.xml`,
-  };
-}
+// robots.txt is served by app/robots.txt/route.ts
+// (needed to add Content-Signal directives not supported by MetadataRoute.Robots)
+export {};

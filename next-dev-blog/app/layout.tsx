@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Metrics from "./metrics";
+import { WebMCP } from "@/components/WebMCP";
 import { getDevAppOrigin } from "@/lib/site";
 
 const baseUrl = getDevAppOrigin();
@@ -24,6 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased">
         <Metrics />
+        <WebMCP />
         {children}
       </body>
     </html>

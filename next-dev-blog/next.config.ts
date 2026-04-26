@@ -18,6 +18,13 @@ const nextConfig: NextConfig = {
           { key: "Vary", value: "Accept" },
         ],
       },
+      {
+        // Content-Signal per draft-romm-aipref-contentsignals (Section 3.2)
+        source: "/robots.txt",
+        headers: [
+          { key: "Content-Signal", value: "ai-train=no, search=yes, ai-input=no" },
+        ],
+      },
     ];
   },
 };

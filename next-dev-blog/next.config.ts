@@ -1,6 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  async rewrites() {
+    return {
+      // beforeFiles runs before metadata routes — overrides app/robots.ts
+      beforeFiles: [
+        { source: "/robots.txt", destination: "/api/robots" },
+      ],
+      afterFiles: [],
+      fallback: [],
+    };
+  },
   async headers() {
     return [
       {

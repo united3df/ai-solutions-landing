@@ -8,6 +8,15 @@ import {
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+  // Content negotiation: return markdown for AI agents requesting text/markdown
+  if (pathname === "/") {
+    const accept = request.headers.get("accept") ?? "";
+    if (accept.includes("text/markdown")) {
+      return NextResponse.rewrite(new URL("/api/page-md", request.url));
+    }
+    return NextResponse.next();
+  }
   if (pathname === "/admin/login" || pathname.startsWith("/admin/login/")) {
     return NextResponse.next();
   }
@@ -47,5 +56,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin", "/admin/:path*"],
+  matcher: ["/", "/admin", "/admin/:path*"],
 };

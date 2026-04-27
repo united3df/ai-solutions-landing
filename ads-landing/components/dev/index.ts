@@ -9,5 +9,7 @@ export { DevProcess } from "./DevProcess";
 export { DevResults } from "./DevResults";
 export { DevPlatforms } from "./DevPlatforms";
 export { DevLeadMagnet } from "./DevLeadMagnet";
+export { DevAssessmentSection } from "./DevAssessmentSection";
+export { DevAssessmentFlow } from "./DevAssessmentFlow";
 export { DevFinalCTA } from "./DevFinalCTA";
 export { DevFooter } from "./DevFooter";

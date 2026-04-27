@@ -10,6 +10,7 @@ import {
   DevResults,
   DevPlatforms,
   DevLeadMagnet,
+  DevAssessmentSection,
   DevFinalCTA,
   DevFooter,
 } from "@/components/dev";
@@ -112,6 +113,7 @@ export default function HomePage() {
           <DevResults />
           <DevPlatforms />
           <DevLeadMagnet />
+          <DevAssessmentSection />
           <DevFinalCTA />
         </div>
         <DevFooter />
